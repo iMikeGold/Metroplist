@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #f5f2ea;
+  font-family: Inter, "Avenir Next", ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: #21c6a8;
+  color: #071013;
+}
+
+.metro-grid {
+  background:
+    radial-gradient(circle at 22% 20%, rgba(33, 198, 168, 0.18), transparent 24%),
+    radial-gradient(circle at 78% 45%, rgba(240, 108, 63, 0.14), transparent 23%),
+    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size: auto, auto, 52px 52px, 52px 52px;
+}
+
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-family: SFMono-Regular, "Roboto Mono", ui-monospace, monospace;
+  font-size: .75rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+  color: rgba(7, 16, 19, .58);
+}
+
+.section-title {
+  margin-top: .85rem;
+  max-width: 760px;
+  font-size: clamp(2.15rem, 5vw, 4.35rem);
+  line-height: 1.03;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
