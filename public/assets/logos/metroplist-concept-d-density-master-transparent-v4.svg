@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc" shape-rendering="geometricPrecision">
+<title id="title">Metroplist Concept D transparent editable master v4</title>
+<desc id="desc">Transparent-background editable master with no tile strokes, stronger tonal blocks, full diagonal highlight, and shadow bleed matching the Concept D mockup more closely.</desc>
+<defs>
+  <clipPath id="RevealClip"><path d="M0 512 L512 0 L512 512 Z"/></clipPath>
+  <linearGradient id="CoverGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#2D3640"/>
+    <stop offset="0.58" stop-color="#20272F"/>
+    <stop offset="1" stop-color="#12181E"/>
+  </linearGradient>
+  <linearGradient id="LeftGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#222C35"/>
+    <stop offset="0.62" stop-color="#30404E"/>
+    <stop offset="1" stop-color="#485A67"/>
+  </linearGradient>
+  <filter id="SoftBleed" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur in="SourceGraphic" stdDeviation="5.5"/></filter>
+  <filter id="LightBleed" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur in="SourceGraphic" stdDeviation="1.35"/></filter>
+</defs>
+<g id="Metroplist_Concept_D_Master">
+  <g id="Density_Reveal" clip-path="url(#RevealClip)">
+    <rect id="DensityTile_r01c01" x="0.000" y="0.000" width="64.000" height="64.000" fill="#4D5B65"/>
+    <rect id="DensityTile_r01c02" x="64.000" y="0.000" width="64.000" height="64.000" fill="#6C7981"/>
+    <rect id="DensityTile_r01c03" x="128.000" y="0.000" width="64.000" height="64.000" fill="#7D8990"/>
+    <rect id="DensityTile_r01c04" x="192.000" y="0.000" width="64.000" height="64.000" fill="#9DA6AC"/>
+    <rect id="DensityTile_r01c05" x="256.000" y="0.000" width="64.000" height="64.000" fill="#AEB7BC"/>
+    <rect id="DensityTile_r01c06" x="320.000" y="0.000" width="64.000" height="64.000" fill="#C9D0D4"/>
+    <rect id="DensityTile_r01c07" x="384.000" y="0.000" width="64.000" height="64.000" fill="#D2D8DB"/>
+    <rect id="DensityTile_r01c08" x="448.000" y="0.000" width="64.000" height="64.000" fill="#E8EDEF"/>
+    <rect id="DensityTile_r02c01" x="0.000" y="64.000" width="64.000" height="64.000" fill="#485761"/>
+    <rect id="DensityTile_r02c02" x="64.000" y="64.000" width="64.000" height="64.000" fill="#475760"/>
+    <rect id="DensityTile_r02c03" x="128.000" y="64.000" width="64.000" height="64.000" fill="#67747C"/>
+    <rect id="DensityTile_r02c04" x="192.000" y="64.000" width="64.000" height="64.000" fill="#78848C"/>
+    <rect id="DensityTile_r02c05" x="256.000" y="64.000" width="64.000" height="64.000" fill="#98A2A8"/>
+    <rect id="DensityTile_r02c06" x="320.000" y="64.000" width="64.000" height="64.000" fill="#A9B2B7"/>
+    <rect id="DensityTile_r02c07" x="384.000" y="64.000" width="64.000" height="64.000" fill="#C4CBCF"/>
+    <rect id="DensityTile_r02c08" x="448.000" y="64.000" width="64.000" height="64.000" fill="#CDD3D7"/>
+    <rect id="DensityTile_r03c01" x="0.000" y="128.000" width="64.000" height="64.000" fill="#354650"/>
+    <rect id="DensityTile_r03c02" x="64.000" y="128.000" width="64.000" height="64.000" fill="#43525C"/>
+    <rect id="DensityTile_r03c03" x="128.000" y="128.000" width="64.000" height="64.000" fill="#42525C"/>
+    <rect id="DensityTile_r03c04" x="192.000" y="128.000" width="64.000" height="64.000" fill="#626F78"/>
+    <rect id="DensityTile_r03c05" x="256.000" y="128.000" width="64.000" height="64.000" fill="#738087"/>
+    <rect id="DensityTile_r03c06" x="320.000" y="128.000" width="64.000" height="64.000" fill="#929DA3"/>
+    <rect id="DensityTile_r03c07" x="384.000" y="128.000" width="64.000" height="64.000" fill="#A4ADB3"/>
+    <rect id="DensityTile_r03c08" x="448.000" y="128.000" width="64.000" height="64.000" fill="#BFC6CA"/>
+    <rect id="DensityTile_r04c01" x="0.000" y="192.000" width="64.000" height="64.000" fill="#31414C"/>
+    <rect id="DensityTile_r04c02" x="64.000" y="192.000" width="64.000" height="64.000" fill="#30414C"/>
+    <rect id="DensityTile_r04c03" x="128.000" y="192.000" width="64.000" height="64.000" fill="#3E4D58"/>
+    <rect id="DensityTile_r04c04" x="192.000" y="192.000" width="64.000" height="64.000" fill="#3D4D57"/>
+    <rect id="DensityTile_r04c05" x="256.000" y="192.000" width="64.000" height="64.000" fill="#5C6A73"/>
+    <rect id="DensityTile_r04c06" x="320.000" y="192.000" width="64.000" height="64.000" fill="#6E7B83"/>
+    <rect id="DensityTile_r04c07" x="384.000" y="192.000" width="64.000" height="64.000" fill="#8D989E"/>
+    <rect id="DensityTile_r04c08" x="448.000" y="192.000" width="64.000" height="64.000" fill="#9FA9AE"/>
+    <rect id="DensityTile_r05c01" x="0.000" y="256.000" width="64.000" height="64.000" fill="#1E303C"/>
+    <rect id="DensityTile_r05c02" x="64.000" y="256.000" width="64.000" height="64.000" fill="#2C3C48"/>
+    <rect id="DensityTile_r05c03" x="128.000" y="256.000" width="64.000" height="64.000" fill="#2B3C47"/>
+    <rect id="DensityTile_r05c04" x="192.000" y="256.000" width="64.000" height="64.000" fill="#384853"/>
+    <rect id="DensityTile_r05c05" x="256.000" y="256.000" width="64.000" height="64.000" fill="#384853"/>
+    <rect id="DensityTile_r05c06" x="320.000" y="256.000" width="64.000" height="64.000" fill="#57656E"/>
+    <rect id="DensityTile_r05c07" x="384.000" y="256.000" width="64.000" height="64.000" fill="#69767E"/>
+    <rect id="DensityTile_r05c08" x="448.000" y="256.000" width="64.000" height="64.000" fill="#88939A"/>
+    <rect id="DensityTile_r06c01" x="0.000" y="320.000" width="64.000" height="64.000" fill="#152734"/>
+    <rect id="DensityTile_r06c02" x="64.000" y="320.000" width="64.000" height="64.000" fill="#192B37"/>
+    <rect id="DensityTile_r06c03" x="128.000" y="320.000" width="64.000" height="64.000" fill="#263743"/>
+    <rect id="DensityTile_r06c04" x="192.000" y="320.000" width="64.000" height="64.000" fill="#263743"/>
+    <rect id="DensityTile_r06c05" x="256.000" y="320.000" width="64.000" height="64.000" fill="#33444E"/>
+    <rect id="DensityTile_r06c06" x="320.000" y="320.000" width="64.000" height="64.000" fill="#33434E"/>
+    <rect id="DensityTile_r06c07" x="384.000" y="320.000" width="64.000" height="64.000" fill="#52606A"/>
+    <rect id="DensityTile_r06c08" x="448.000" y="320.000" width="64.000" height="64.000" fill="#64717A"/>
+    <rect id="DensityTile_r07c01" x="0.000" y="384.000" width="64.000" height="64.000" fill="#081B28"/>
+    <rect id="DensityTile_r07c02" x="64.000" y="384.000" width="64.000" height="64.000" fill="#10222F"/>
+    <rect id="DensityTile_r07c03" x="128.000" y="384.000" width="64.000" height="64.000" fill="#142633"/>
+    <rect id="DensityTile_r07c04" x="192.000" y="384.000" width="64.000" height="64.000" fill="#21333E"/>
+    <rect id="DensityTile_r07c05" x="256.000" y="384.000" width="64.000" height="64.000" fill="#21323E"/>
+    <rect id="DensityTile_r07c06" x="320.000" y="384.000" width="64.000" height="64.000" fill="#2E3F4A"/>
+    <rect id="DensityTile_r07c07" x="384.000" y="384.000" width="64.000" height="64.000" fill="#2E3E4A"/>
+    <rect id="DensityTile_r07c08" x="448.000" y="384.000" width="64.000" height="64.000" fill="#4D5C65"/>
+    <rect id="DensityTile_r08c01" x="0.000" y="448.000" width="64.000" height="64.000" fill="#081B28"/>
+    <rect id="DensityTile_r08c02" x="64.000" y="448.000" width="64.000" height="64.000" fill="#081B28"/>
+    <rect id="DensityTile_r08c03" x="128.000" y="448.000" width="64.000" height="64.000" fill="#0B1E2A"/>
+    <rect id="DensityTile_r08c04" x="192.000" y="448.000" width="64.000" height="64.000" fill="#0F212E"/>
+    <rect id="DensityTile_r08c05" x="256.000" y="448.000" width="64.000" height="64.000" fill="#1C2E3A"/>
+    <rect id="DensityTile_r08c06" x="320.000" y="448.000" width="64.000" height="64.000" fill="#1C2E3A"/>
+    <rect id="DensityTile_r08c07" x="384.000" y="448.000" width="64.000" height="64.000" fill="#293A45"/>
+    <rect id="DensityTile_r08c08" x="448.000" y="448.000" width="64.000" height="64.000" fill="#293A45"/>
+    <path id="OverlapShadowBleed" d="M0 512 L512 0" fill="none" stroke="#000000" stroke-opacity="0.28" stroke-width="20" filter="url(#SoftBleed)"/>
+    <path id="OverlapLightBleed" d="M0 512 L512 0" fill="none" stroke="#FFFFFF" stroke-opacity="0.06" stroke-width="8" filter="url(#LightBleed)"/>
+  </g>
+  <path id="FoldUpperPlane" d="M0 0 H512 L256 256 Z" fill="url(#CoverGrad)"/>
+  <path id="FoldLeftPlane" d="M0 0 L256 256 L0 512 Z" fill="url(#LeftGrad)"/>
+  <g id="FoldEdges" fill="none">
+    <path id="DiagonalHighlight" d="M0 512 L512 0" stroke="#F7F8F6" stroke-opacity="0.94" stroke-width="1.9" stroke-linecap="round"/>
+    <path id="InnerCrease" d="M0 0 L256 256" stroke="#7D8994" stroke-opacity="0.12" stroke-width="1.2"/>
+  </g>
+</g>
+</svg>
