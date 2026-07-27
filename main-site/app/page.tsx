@@ -13,6 +13,7 @@ import {
   Sparkles,
   Telescope
 } from "lucide-react";
+import MobileNavigation from "./mobile-navigation";
 
 const LOGO = "/assets/logos/metroplist-concept-d-density-master-transparent-v4.svg";
 
@@ -75,6 +76,7 @@ export default function Home() {
             <a href="#stories" className="hover:text-graphite">Stories</a>
             <a href="#method" className="hover:text-graphite">Method</a>
           </div>
+          <MobileNavigation />
         </nav>
       </header>
 
