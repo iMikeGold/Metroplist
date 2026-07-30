@@ -1,0 +1,40 @@
+{
+  "name": "metroplist-app-site",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Metroplist Data Foundation and Density Explorer — Release 0.1",
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "foundation:verify": "node scripts/verify-foundation.mjs",
+    "verify": "npm run lint && npm run typecheck && npm run test && npm run foundation:verify",
+    "db:migrate:local": "wrangler d1 migrations apply metroplist-app-local --local",
+    "db:seed:local": "wrangler d1 execute metroplist-app-local --local --file=database/seeds/0001_reference_data.sql"
+    ,"db:seed:evidence:local": "wrangler d1 execute metroplist-app-local --local --file=database/seeds/0002_greenwich_bromley_density_2021.sql"
+  },
+  "dependencies": {
+    "next": "16.2.12",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.12",
+    "typescript": "^5",
+    "vitest": "4.1.10",
+    "wrangler": "4.114.0"
+  },
+  "engines": {
+    "node": "22.x",
+    "npm": "10.x"
+  }
+}

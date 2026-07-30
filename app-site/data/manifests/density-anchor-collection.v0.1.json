@@ -1,0 +1,245 @@
+{
+  "manifestVersion": "0.1.1",
+  "title": "Density Anchor and Scenario Collection",
+  "status": "research_candidates_only",
+  "rule": "Candidate labels, aliases and source statements are not canonical places or verified observations. Resolve geography, boundary, period and authoritative evidence before promotion.",
+  "sourceKeys": [
+    "video_reallifelore_one_city_2016",
+    "legacy_metroplist_conversations_2026"
+  ],
+  "candidateGroups": [
+    {
+      "group": "density_reference_geographies",
+      "purpose": "Places whose reported densities are used as scenario templates.",
+      "candidates": [
+        {
+          "key": "new_orleans_city",
+          "label": "New Orleans",
+          "expectedKind": "city",
+          "jurisdictionHint": "Louisiana, United States",
+          "verificationStatus": "required"
+        },
+        {
+          "key": "austin_city",
+          "label": "Austin",
+          "expectedKind": "city",
+          "jurisdictionHint": "Texas, United States",
+          "verificationStatus": "required"
+        },
+        {
+          "key": "chicago_city",
+          "label": "Chicago",
+          "expectedKind": "city",
+          "jurisdictionHint": "Illinois, United States",
+          "verificationStatus": "required"
+        },
+        {
+          "key": "singapore_state",
+          "label": "Singapore",
+          "expectedKind": "country_city_state",
+          "jurisdictionHint": "Singapore",
+          "verificationStatus": "required"
+        },
+        {
+          "key": "manhattan_borough",
+          "label": "Manhattan",
+          "expectedKind": "borough",
+          "jurisdictionHint": "New York City, United States",
+          "verificationStatus": "required"
+        },
+        {
+          "key": "manila_city",
+          "label": "City of Manila",
+          "aliasesFromNotes": [
+            "Manila",
+            "Manilla"
+          ],
+          "expectedKind": "city",
+          "jurisdictionHint": "Philippines",
+          "verificationStatus": "required"
+        },
+        {
+          "key": "dharavi_area",
+          "label": "Dharavi",
+          "expectedKind": "neighbourhood_or_statistical_area",
+          "jurisdictionHint": "Mumbai, India",
+          "verificationStatus": "boundary_resolution_required"
+        },
+        {
+          "key": "kowloon_walled_city_historic",
+          "label": "Kowloon Walled City",
+          "expectedKind": "historical_settlement",
+          "jurisdictionHint": "Hong Kong",
+          "verificationStatus": "historical_boundary_and_period_required"
+        }
+      ]
+    },
+    {
+      "group": "footprint_reference_geographies",
+      "purpose": "Territories or constructed areas used to make a calculated world-city footprint legible.",
+      "candidates": [
+        {
+          "key": "continental_united_states",
+          "label": "Continental United States",
+          "expectedKind": "defined_region_or_composite",
+          "verificationStatus": "definition_required"
+        },
+        {
+          "key": "australia_country",
+          "label": "Australia",
+          "expectedKind": "country",
+          "verificationStatus": "required"
+        },
+        {
+          "key": "iran_country",
+          "label": "Iran",
+          "expectedKind": "country",
+          "verificationStatus": "required"
+        },
+        {
+          "key": "texas_oklahoma_louisiana_composite",
+          "label": "Texas + Oklahoma + Louisiana",
+          "expectedKind": "geographic_composite",
+          "members": [
+            "Texas",
+            "Oklahoma",
+            "Louisiana"
+          ],
+          "verificationStatus": "member_boundaries_required"
+        },
+        {
+          "key": "ecuador_country",
+          "label": "Ecuador",
+          "expectedKind": "country",
+          "verificationStatus": "required"
+        },
+        {
+          "key": "missouri_state",
+          "label": "Missouri",
+          "expectedKind": "state",
+          "jurisdictionHint": "United States",
+          "verificationStatus": "required"
+        },
+        {
+          "key": "new_jersey_state",
+          "label": "New Jersey",
+          "expectedKind": "state",
+          "jurisdictionHint": "United States",
+          "verificationStatus": "required"
+        },
+        {
+          "key": "palestine_defined_territory",
+          "label": "Palestine",
+          "expectedKind": "territory_with_declared_definition",
+          "verificationStatus": "legal_and_boundary_definition_required"
+        },
+        {
+          "key": "usa_country",
+          "label": "United States of America",
+          "aliasesFromNotes": [
+            "USA"
+          ],
+          "expectedKind": "country",
+          "verificationStatus": "required"
+        }
+      ]
+    },
+    {
+      "group": "scale_and_context_anchors",
+      "purpose": "Places used to explain nested scale, area, metropolitan extent or geopolitical ambiguity.",
+      "candidates": [
+        {
+          "key": "tokyo_unresolved",
+          "label": "Tokyo",
+          "expectedKind": "ambiguous_place_search",
+          "requiredDisambiguation": [
+            "Tokyo Metropolis",
+            "Tokyo special wards",
+            "Tokyo metropolitan area"
+          ],
+          "verificationStatus": "resolution_required"
+        },
+        {
+          "key": "london_unresolved",
+          "label": "London",
+          "expectedKind": "ambiguous_place_search",
+          "requiredDisambiguation": [
+            "Greater London",
+            "London built-up area",
+            "London metropolitan area"
+          ],
+          "verificationStatus": "resolution_required"
+        },
+        {
+          "key": "central_park",
+          "label": "Central Park",
+          "expectedKind": "park_or_landmark_geography",
+          "jurisdictionHint": "New York City, United States",
+          "verificationStatus": "boundary_required"
+        },
+        {
+          "key": "england_constituent_country",
+          "label": "England",
+          "expectedKind": "constituent_country",
+          "verificationStatus": "required"
+        },
+        {
+          "key": "united_kingdom_country",
+          "label": "United Kingdom",
+          "aliasesFromNotes": [
+            "UK"
+          ],
+          "expectedKind": "sovereign_country",
+          "verificationStatus": "required"
+        },
+        {
+          "key": "israel_country",
+          "label": "Israel",
+          "aliasesFromNotes": [
+            "Isreal"
+          ],
+          "expectedKind": "country",
+          "verificationStatus": "required"
+        },
+        {
+          "key": "louisiana_state",
+          "label": "Louisiana",
+          "expectedKind": "state",
+          "jurisdictionHint": "United States",
+          "verificationStatus": "required"
+        },
+        {
+          "key": "oklahoma_state",
+          "label": "Oklahoma",
+          "expectedKind": "state",
+          "jurisdictionHint": "United States",
+          "verificationStatus": "required"
+        }
+      ]
+    },
+    {
+      "group": "initial_metroplist_local_anchors",
+      "purpose": "Release 0.1 local place-resolution and reversible-comparison candidates.",
+      "candidates": [
+        {
+          "key": "greenwich_borough",
+          "label": "Royal Borough of Greenwich",
+          "expectedKind": "borough",
+          "verificationStatus": "required"
+        },
+        {
+          "key": "bromley_borough",
+          "label": "London Borough of Bromley",
+          "expectedKind": "borough",
+          "verificationStatus": "required"
+        },
+        {
+          "key": "greater_london",
+          "label": "Greater London",
+          "expectedKind": "region",
+          "verificationStatus": "required"
+        }
+      ]
+    }
+  ]
+}

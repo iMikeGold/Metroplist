@@ -1,0 +1,60 @@
+{
+  "manifestVersion": "0.1.0",
+  "scenarioKey": "world_population_one_city_2016",
+  "title": "What if the 2016 world population lived in one city?",
+  "status": "historical_source_scenario_unverified",
+  "sourceKey": "video_reallifelore_one_city_2016",
+  "referenceYear": 2016,
+  "inputs": [
+    {
+      "key": "world_population",
+      "value": 7400000000,
+      "unit": "people",
+      "provenanceStatus": "source_asserted_not_canonical_observation"
+    }
+  ],
+  "relationships": [
+    {
+      "densityTemplate": "new_orleans_city",
+      "footprintReference": "continental_united_states"
+    },
+    {
+      "densityTemplate": "austin_city",
+      "footprintReference": "australia_country"
+    },
+    {
+      "densityTemplate": "chicago_city",
+      "footprintReference": "iran_country"
+    },
+    {
+      "densityTemplate": "singapore_state",
+      "footprintReference": "texas_oklahoma_louisiana_composite"
+    },
+    {
+      "densityTemplate": "manhattan_borough",
+      "footprintReference": "ecuador_country"
+    },
+    {
+      "densityTemplate": "manila_city",
+      "footprintReference": "missouri_state"
+    },
+    {
+      "densityTemplate": "dharavi_area",
+      "footprintReference": "new_jersey_state"
+    },
+    {
+      "densityTemplate": "kowloon_walled_city_historic",
+      "footprintReference": "palestine_defined_territory"
+    }
+  ],
+  "contextAnchors": [
+    {
+      "subject": "dharavi_area",
+      "areaAnalogy": "central_park"
+    },
+    {
+      "subject": "tokyo_unresolved",
+      "scaleComparison": "london_unresolved"
+    }
+  ]
+}

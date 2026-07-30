@@ -1,0 +1,38 @@
+{
+  "manifestVersion": "0.1.0",
+  "title": "Metroplist research source registry — bootstrap references",
+  "status": "context_only_not_verified_evidence",
+  "sources": [
+    {
+      "key": "video_reallifelore_one_city_2016",
+      "sourceType": "video",
+      "title": "What if Everyone Lived in Just One City?",
+      "creator": "RealLifeLore",
+      "publishedDate": "2016-09-23",
+      "url": "https://youtu.be/r_iNRGac_uM",
+      "role": "originating thought-experiment and anchor-chain source",
+      "sourceAssertions": [
+        {
+          "statement": "The scenario uses 7.4 billion people as its 2016 world-population input.",
+          "status": "source_asserted_requires_official_series_verification"
+        }
+      ]
+    },
+    {
+      "key": "legacy_metroplist_conversations_2026",
+      "sourceType": "conversation_collection",
+      "title": "Legacy Metroplist FreeGPT conversation references",
+      "role": "concept history only",
+      "status": "unreviewed",
+      "urls": [
+        "https://chatgpt.com/share/6a6bbb2c-5b70-83eb-98c3-cc4ddcb29c5f",
+        "https://chatgpt.com/share/694888ab-61c8-8006-ba2e-b974e5242d2d",
+        "https://chatgpt.com/share/6a6bbba1-f0a0-83eb-a212-60e66dfd067d",
+        "https://chatgpt.com/share/6a6bbbc5-4910-83ed-a421-b3028c1ddefd",
+        "https://chatgpt.com/share/6a6bbbdb-bbe4-83eb-bcdc-ab567b37846d",
+        "https://chatgpt.com/share/6a6bbc09-3a50-83eb-b6b8-4f9b5f6b6e60"
+      ],
+      "restriction": "Do not turn chat statements into canonical observations or verified claims without independent evidence."
+    }
+  ]
+}
