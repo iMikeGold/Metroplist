@@ -132,13 +132,14 @@ def parse_wpp(path: Path) -> list[dict[str, str]]:
 
 def generate_sql(m49: list[dict[str, str]], capitals: list[dict[str, object]], wpp: list[dict[str, str]], hashes: dict[str, str]) -> str:
     entities, relationships = m49_entities(m49)
+    known_iso3 = {entity.get("iso3") for entity in entities.values() if entity.get("iso3")}
     wpp_only = {
         str(int(row["LocID"])).zfill(3): {
             "name": row["Location"],
             "iso3": row["ISO3_code"],
         }
         for row in wpp
-        if str(int(row["LocID"])).zfill(3) not in entities
+        if row["ISO3_code"] not in known_iso3
     }
     lines = ["PRAGMA foreign_keys = ON;"]
     lines += [
@@ -194,7 +195,7 @@ def generate_sql(m49: list[dict[str, str]], capitals: list[dict[str, object]], w
         raw_id = f"obs_wpp_raw_{code}_{year}"
         output_id = f"obs_wpp_pop_{code}_{year}"
         calc_id = f"calc_wpp_pop_{code}_{year}"
-        geo_id = f"geo_m49_{code}" if code in entities else f"geo_wpp_{code}"
+        geo_id = f"geo_wpp_{code}" if code in wpp_only else f"geo_m49_{code}"
         lines.append(f"INSERT OR IGNORE INTO observations (id,geography_id,indicator_id,unit_id,dataset_release_id,value_numeric,reference_year,reference_period_start,reference_period_end,publication_date,ingested_at,verified_at,quality_status,preferred_status,is_estimate,evidence_status,methodology_version) VALUES ({q(raw_id)},{q(geo_id)},'ind_wpp_population_thousands','unit_thousand_people','rel_wpp_2024',{raw},{year},{q(str(year)+'-07-01')},{q(str(year)+'-07-01')},'2024-07-11',{q(RETRIEVED_AT)},{q(RETRIEVED_AT)},'verified','preferred',1,'estimate','WPP 2024 medium estimate, source unit');")
         lines.append(f"INSERT OR IGNORE INTO calculations (id,calculation_type,formula_code,formula_version,output_indicator_id,executed_at,input_manifest_json,output_value_numeric,output_unit_id) VALUES ({q(calc_id)},'unit_conversion','THOUSAND_PEOPLE * 1000','1','ind_population_total',{q(RETRIEVED_AT)},{q(json.dumps([raw_id], separators=(',', ':')))}, {raw * 1000.0},'unit_people');")
         lines.append(f"INSERT OR IGNORE INTO observations (id,geography_id,indicator_id,unit_id,value_numeric,reference_year,reference_period_start,reference_period_end,publication_date,ingested_at,verified_at,quality_status,preferred_status,is_estimate,evidence_status,methodology_version) VALUES ({q(output_id)},{q(geo_id)},'ind_population_total','unit_people',{raw * 1000.0},{year},{q(str(year)+'-07-01')},{q(str(year)+'-07-01')},'2024-07-11',{q(RETRIEVED_AT)},{q(RETRIEVED_AT)},'verified','preferred',1,'estimate','Metroplist WPP unit conversion v1');")
@@ -231,7 +232,7 @@ def main() -> None:
         {
             row["LocID"]
             for row in wpp
-            if row["LocID"].zfill(3) not in entities
+            if row["ISO3_code"] not in {entity.get("iso3") for entity in entities.values()}
         }
     )
     manifest = {

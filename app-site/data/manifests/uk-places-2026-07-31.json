@@ -4,7 +4,7 @@
     "localAuthorityDistricts": 374
   },
   "generatedAt": "2026-07-31",
-  "generatedSqlSha256": "9db8596ed79b9fdd1e75f61c37e7a7ec8c890f7ad0be9c47de516279f03b09a7",
+  "generatedSqlSha256": "f271a7200f6adcbcfaffa79fc0df5d0e263cb5eb6360c217dafe679f9d423cef",
   "rawAssetsCommitted": false,
   "sources": {
     "builtUpAreas": {
@@ -15,7 +15,7 @@
     },
     "localAuthorityDistricts": {
       "referenceDate": "2021-12-31",
-      "sha256": "5b97944aa3803cced9733698f2cfc8e12fc91e39314e5d13e8b12181fc7f5628",
+      "sha256": "5b781a83d4ad75cbc5e58009f039fecc7d826b75eff1d16b9f6b165923c63e5b",
       "url": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Local_Authority_Districts_December_2021_UK_BUC_2022/FeatureServer/0/query"
     }
   }

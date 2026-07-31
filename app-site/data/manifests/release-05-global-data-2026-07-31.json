@@ -1,0 +1,102 @@
+{
+  "coverage": {
+    "cities": 16828,
+    "estimateValues": 1758844,
+    "projectionValues": 1360028,
+    "yearRange": [
+      1975,
+      2050
+    ]
+  },
+  "generatedAt": "2026-07-31",
+  "notes": [
+    "F29 was unavailable from its published URL at retrieval time.",
+    "Built-up area is deterministically derived from F21 population and F30 built-up area per capita."
+  ],
+  "sources": {
+    "built_up_per_person": {
+      "sha256": "942a9d74e66949cd8eb818fa208b9402bbd5225a1dbce7f98c3101f9904ba34f",
+      "url": "https://population.un.org/wup/assets/Download/Cities/WUP2025-F30-DEGURBA-Cities_BU_m2_per_capita.xlsx"
+    },
+    "density": {
+      "sha256": "aff1240a0db72de6adabb5fb8a734df2d9be3159f94886c18ff61d5eaea1f0b0",
+      "url": "https://population.un.org/wup/assets/Download/Cities/WUP2025-F34-DEGURBA-Cities_Pop_density.xlsx"
+    },
+    "land_area": {
+      "sha256": "1174b1d46344a14c6d92d5a85e8b852cb789cf4d67835c2ff96c1634450af25f",
+      "url": "https://population.un.org/wup/assets/Download/Cities/WUP2025-F25-DEGURBA-Cities_AREA_km2.xlsx"
+    },
+    "population": {
+      "sha256": "3a96030d87aec6c1c50f658d5321067d6345e1ab936c5d2854524f972caa75c0",
+      "url": "https://population.un.org/wup/assets/Download/Cities/WUP2025-F21-DEGURBA-Cities_Pop.xlsx"
+    },
+    "world_bank_land": {
+      "sha256": "42115419ba6f64a19455672136076ced22f7021c81fcba721b1eb0a0f69b18b8",
+      "url": "https://api.worldbank.org/v2/en/indicator/AG.LND.TOTL.K2?downloadformat=csv"
+    }
+  },
+  "storage": {
+    "historyImports": {
+      "estimates": {
+        "bytes": 162093848,
+        "maximumStatementBytes": 24101,
+        "path": "database/generated/0006_wup_city_estimates.sql",
+        "rows": 1758844,
+        "sha256": "e8c737ac99bc769332a395c883b088e1e957dc6b148610d3287a0392879dd3ad"
+      },
+      "projections": {
+        "bytes": 128110399,
+        "maximumStatementBytes": 21880,
+        "path": "database/generated/0006_wup_city_projections.sql",
+        "rows": 1360028,
+        "sha256": "4af90b409cb275264a7098a19cf8d78ec7acf5b9992c7ee6101febd0b60c26bf"
+      }
+    },
+    "mainSqlBytes": 68611100,
+    "sourceUnitRowsDuplicated": 0,
+    "verifiedHistoryDatabases": {
+      "estimates": {
+        "appendOnlyGuards": true,
+        "bytes": 327761920,
+        "evidenceStatus": "estimate",
+        "firstYear": 1975,
+        "foreignKeyViolations": 0,
+        "indexes": [
+          "idx_city_series_indicator_year",
+          "idx_city_series_year_status"
+        ],
+        "indicators": 4,
+        "lastYear": 2025,
+        "path": "data/staging/release-05-sizing/metroplist-city-history-estimates.sqlite",
+        "places": 13191,
+        "rows": 1758844,
+        "secondImportUnchanged": true,
+        "semanticDuplicateGroups": 0,
+        "sourceAssets": 4,
+        "sourceReleases": 1,
+        "stagingTables": 0
+      },
+      "projections": {
+        "appendOnlyGuards": true,
+        "bytes": 261722112,
+        "evidenceStatus": "projection",
+        "firstYear": 2026,
+        "foreignKeyViolations": 0,
+        "indexes": [
+          "idx_city_series_indicator_year",
+          "idx_city_series_year_status"
+        ],
+        "indicators": 4,
+        "lastYear": 2050,
+        "path": "data/staging/release-05-sizing/metroplist-city-history-projections.sqlite",
+        "places": 15727,
+        "rows": 1360028,
+        "secondImportUnchanged": true,
+        "semanticDuplicateGroups": 0,
+        "sourceAssets": 4,
+        "sourceReleases": 1,
+        "stagingTables": 0
+      }
+    }
+  }
+}

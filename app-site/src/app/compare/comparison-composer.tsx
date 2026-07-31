@@ -7,6 +7,7 @@ import {
   findNewestCompatibleEvidencePairs,
   type ComparableEvidence,
 } from "@/modules/comparisons/evidence-compatibility";
+import { publicPlaceType } from "@/modules/places/presentation";
 
 interface Candidate {
   id: string;
@@ -19,12 +20,15 @@ interface Candidate {
 
 function PlacePicker({
   label,
+  query,
+  onQueryChange,
   onSelect,
 }: {
   label: string;
+  query: string;
+  onQueryChange: (query: string) => void;
   onSelect: (candidate: Candidate) => void;
 }) {
-  const [query, setQuery] = useState("");
   const [candidates, setCandidates] = useState<Candidate[]>([]);
   const [message, setMessage] = useState("");
 
@@ -46,7 +50,7 @@ function PlacePicker({
       <form onSubmit={search}>
         <label>
           {label}
-          <input value={query} onChange={(event) => setQuery(event.target.value)} required />
+          <input value={query} onChange={(event) => onQueryChange(event.target.value)} required />
         </label>
         <button type="submit">Find</button>
       </form>
@@ -60,12 +64,12 @@ function PlacePicker({
             onClick={() => {
               onSelect(candidate);
               setCandidates([]);
-              setQuery(candidate.canonicalName);
+              onQueryChange(candidate.canonicalName);
             }}
           >
             <strong>{candidate.canonicalName}</strong>
             <span>
-              {candidate.geographyTypes.join(", ") || candidate.placeKind}
+              {publicPlaceType(candidate.geographyTypes, candidate.placeKind)}
               {candidate.parentName ? ` · ${candidate.parentName}` : ""}
             </span>
           </button>
@@ -78,6 +82,8 @@ function PlacePicker({
 export function ComparisonComposer() {
   const [origin, setOrigin] = useState<Candidate | null>(null);
   const [target, setTarget] = useState<Candidate | null>(null);
+  const [originQuery, setOriginQuery] = useState("");
+  const [targetQuery, setTargetQuery] = useState("");
   const [originEvidence, setOriginEvidence] = useState<ComparableEvidence[]>([]);
   const [targetEvidence, setTargetEvidence] = useState<ComparableEvidence[]>([]);
   const [selectedObservationIds, setSelectedObservationIds] = useState("");
@@ -101,24 +107,16 @@ export function ComparisonComposer() {
   const compatiblePairs = useMemo(() => {
     if (!origin || !target) return [];
     return findNewestCompatibleEvidencePairs(
-      originEvidence.filter(
-        (evidence) => evidence.indicatorCode === "POP_DENSITY_KM2",
-      ),
-      targetEvidence.filter(
-        (evidence) => evidence.indicatorCode === "POP_DENSITY_KM2",
-      ),
+      originEvidence,
+      targetEvidence,
     );
   }, [origin, originEvidence, target, targetEvidence]);
   const incompatibilityReasons = useMemo(
     () =>
       origin && target && compatiblePairs.length === 0
         ? explainEvidenceIncompatibility(
-            originEvidence.filter(
-              (evidence) => evidence.indicatorCode === "POP_DENSITY_KM2",
-            ),
-            targetEvidence.filter(
-              (evidence) => evidence.indicatorCode === "POP_DENSITY_KM2",
-            ),
+            originEvidence,
+            targetEvidence,
           )
         : [],
     [compatiblePairs.length, origin, originEvidence, target, targetEvidence],
@@ -133,6 +131,8 @@ export function ComparisonComposer() {
     <div className="comparison-composer">
       <PlacePicker
         label="First place"
+        query={originQuery}
+        onQueryChange={setOriginQuery}
         onSelect={(candidate) => {
           setOrigin(candidate);
           setOriginEvidence([]);
@@ -141,6 +141,8 @@ export function ComparisonComposer() {
       />
       <PlacePicker
         label="Second place"
+        query={targetQuery}
+        onQueryChange={setTargetQuery}
         onSelect={(candidate) => {
           setTarget(candidate);
           setTargetEvidence([]);
@@ -187,6 +189,8 @@ export function ComparisonComposer() {
             onClick={() => {
               setOrigin(target);
               setTarget(origin);
+              setOriginQuery(targetQuery);
+              setTargetQuery(originQuery);
               setOriginEvidence(targetEvidence);
               setTargetEvidence(originEvidence);
               setSelectedObservationIds("");

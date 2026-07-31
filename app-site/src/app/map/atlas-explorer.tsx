@@ -1,11 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import type { Map as MapLibreMap } from "maplibre-gl";
 import { requestLocationHint } from "@/modules/location";
+import { formatMeasure, publicPlaceType } from "@/modules/places/presentation";
 
 interface Candidate {
   id: string;
+  slug: string;
   canonicalName: string;
   placeKind: string;
   parentName: string | null;
@@ -27,14 +30,21 @@ interface Indicator {
   estimate: boolean;
 }
 
-export function AtlasExplorer({ initialQuery = "" }: { initialQuery?: string }) {
+export function AtlasExplorer({
+  initialQuery = "",
+  initialPlaceSlug = "",
+}: {
+  initialQuery?: string;
+  initialPlaceSlug?: string;
+}) {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<MapLibreMap | null>(null);
+  const initialSelectionHandled = useRef(false);
   const [query, setQuery] = useState(initialQuery);
   const [candidates, setCandidates] = useState<Candidate[]>([]);
   const [selected, setSelected] = useState<PlaceDetail | null>(null);
   const [indicators, setIndicators] = useState<Indicator[]>([]);
-  const [message, setMessage] = useState("Search the canonical registry.");
+  const [message, setMessage] = useState("Search for a place to begin.");
   const [mapStatus, setMapStatus] = useState<"loading" | "ready" | "error">(
     "loading",
   );
@@ -93,7 +103,10 @@ export function AtlasExplorer({ initialQuery = "" }: { initialQuery?: string }) 
     const submittedQuery = term.trim();
     if (!submittedQuery) return;
     setQuery(submittedQuery);
-    const response = await fetch(`/api/places?q=${encodeURIComponent(submittedQuery)}&limit=12`);
+    window.history.replaceState(null, "", `/map?q=${encodeURIComponent(submittedQuery)}`);
+    setSelected(null);
+    setIndicators([]);
+    const response = await fetch(`/api/places?q=${encodeURIComponent(submittedQuery)}&limit=25`);
     if (!response.ok) {
       setCandidates([]);
       setMessage("Place search could not connect to the Metroplist registry.");
@@ -106,7 +119,7 @@ export function AtlasExplorer({ initialQuery = "" }: { initialQuery?: string }) 
         ? locationCandidate
           ? `Your approximate location appears to be ${submittedQuery}. Choose the matching place.`
           : `${payload.candidates.length} candidate${payload.candidates.length === 1 ? "" : "s"} found.`
-        : "No canonical place matched this prefix.",
+        : "No place matched this search.",
     );
   }, []);
 
@@ -123,7 +136,7 @@ export function AtlasExplorer({ initialQuery = "" }: { initialQuery?: string }) 
     await runSearch(query);
   }
 
-  async function selectPlace(placeId: string) {
+  const selectPlace = useCallback(async (placeId: string) => {
     const response = await fetch(`/api/places/${encodeURIComponent(placeId)}/indicators`);
     if (!response.ok) {
       setMessage("This place summary is temporarily unavailable.");
@@ -132,6 +145,11 @@ export function AtlasExplorer({ initialQuery = "" }: { initialQuery?: string }) 
     const payload = await response.json();
     setSelected(payload.place);
     setIndicators(payload.indicators ?? []);
+    window.history.replaceState(
+      null,
+      "",
+      `/map?q=${encodeURIComponent(query)}&place=${encodeURIComponent(payload.place.slug)}`,
+    );
     if (payload.place?.centroid && map.current) {
       map.current.flyTo({
         center: [
@@ -140,8 +158,23 @@ export function AtlasExplorer({ initialQuery = "" }: { initialQuery?: string }) 
         ],
         zoom: payload.place.placeKind === "country" ? 4 : 9,
       });
+      setMessage(`${payload.place.canonicalName} selected.`);
+    } else if (map.current) {
+      map.current.flyTo({ center: [0, 18], zoom: 1.35 });
+      setMessage(
+        `${payload.place.canonicalName} selected. A mapped location is not yet available.`,
+      );
     }
-  }
+  }, [query]);
+
+  useEffect(() => {
+    if (!initialPlaceSlug || initialSelectionHandled.current || !candidates.length) return;
+    const match = candidates.find((candidate) => candidate.slug === initialPlaceSlug);
+    initialSelectionHandled.current = true;
+    if (!match) return;
+    const selectionTimer = window.setTimeout(() => void selectPlace(match.id), 0);
+    return () => window.clearTimeout(selectionTimer);
+  }, [candidates, initialPlaceSlug, selectPlace]);
 
   async function useLocationHint() {
     const hint = await requestLocationHint();
@@ -163,8 +196,8 @@ export function AtlasExplorer({ initialQuery = "" }: { initialQuery?: string }) 
     <div className="atlas-shell">
       <aside className="atlas-sidebar">
         <header>
-          <p className="eyebrow">Metroplist Atlas</p>
-          <h1>World registry</h1>
+          <p className="eyebrow">Explore Metroplist</p>
+          <h1>Explore places</h1>
         </header>
         <form className="atlas-search" onSubmit={search}>
           <label htmlFor="place-query">Place name or official identifier</label>
@@ -193,7 +226,7 @@ export function AtlasExplorer({ initialQuery = "" }: { initialQuery?: string }) 
             >
               <strong>{candidate.canonicalName}</strong>
               <span>
-                {candidate.geographyTypes.join(", ") || candidate.placeKind}
+                {publicPlaceType(candidate.geographyTypes, candidate.placeKind)}
                 {candidate.parentName ? ` · ${candidate.parentName}` : ""}
               </span>
             </button>
@@ -203,20 +236,20 @@ export function AtlasExplorer({ initialQuery = "" }: { initialQuery?: string }) 
           <section className="place-summary">
             <p className="eyebrow">Selected place</p>
             <h2>{selected.canonicalName}</h2>
-            <p>{selected.geographyTypes.join(", ") || selected.placeKind}</p>
+            <p>{publicPlaceType(selected.geographyTypes, selected.placeKind)}</p>
             <dl>
               {indicators.map((indicator) => (
                 <div key={indicator.id}>
                   <dt>{indicator.canonicalName}</dt>
                   <dd>
-                    {indicator.latestValue?.toLocaleString() ?? "No numeric value"}
-                    {" "}{indicator.unit}
+                    {formatMeasure(indicator.latestValue, indicator.unit)}
                     {indicator.latestYear ? ` (${indicator.latestYear})` : ""}
                     {indicator.estimate ? " · estimate" : ""}
                   </dd>
                 </div>
               ))}
             </dl>
+            <Link href={`/place/${selected.slug}`}>View full place record</Link>
           </section>
         ) : null}
       </aside>

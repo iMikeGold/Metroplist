@@ -191,7 +191,7 @@ export class D1RegistryReadRepository implements RegistryReadRepository {
             AND o.preferred_status = 'preferred'
             AND o.quality_status IN ('verified', 'qualified')
         )
-        SELECT i.id, i.code, i.canonical_name, u.symbol,
+        SELECT i.id, i.code, i.canonical_name, COALESCE(u.symbol, u.canonical_name) AS symbol,
           COUNT(*) AS observation_count,
           MIN(po.reference_year) AS first_year,
           MAX(po.reference_year) AS last_year,
@@ -206,6 +206,7 @@ export class D1RegistryReadRepository implements RegistryReadRepository {
         FROM place_observations po
         JOIN indicators i ON i.id = po.indicator_id
         JOIN units u ON u.id = po.unit_id
+        WHERE i.status = 'active'
         GROUP BY i.id, i.code, i.canonical_name, u.symbol
         ORDER BY i.canonical_name`)
       .bind(placeId)
@@ -239,7 +240,7 @@ export class D1RegistryReadRepository implements RegistryReadRepository {
     const result = await this.db
       .prepare(`
         SELECT o.id AS observation_id, i.code AS indicator_code,
-          i.canonical_name AS indicator_name, u.symbol,
+          i.canonical_name AS indicator_name, COALESCE(u.symbol, u.canonical_name) AS symbol,
           o.value_numeric, o.reference_year, o.reference_period_start,
           o.reference_period_end, o.methodology_version, o.quality_status,
           o.preferred_status, o.is_estimate, o.evidence_status, o.dataset_release_id,
@@ -249,6 +250,7 @@ export class D1RegistryReadRepository implements RegistryReadRepository {
         JOIN indicators i ON i.id = o.indicator_id
         JOIN units u ON u.id = o.unit_id
         WHERE g.place_id = ?
+          AND i.status = 'active'
           AND o.preferred_status = 'preferred'
           AND o.quality_status IN ('verified', 'qualified')
         ORDER BY i.code, o.reference_year DESC, o.verified_at DESC, o.id`)
@@ -300,7 +302,24 @@ export class D1RegistryReadRepository implements RegistryReadRepository {
           (SELECT MIN(reference_year) FROM observations
             WHERE indicator_id = 'ind_wpp_population_thousands') AS first_population_year,
           (SELECT MAX(reference_year) FROM observations
-            WHERE indicator_id = 'ind_wpp_population_thousands') AS last_population_year`)
+            WHERE indicator_id = 'ind_wpp_population_thousands') AS last_population_year,
+          (SELECT COUNT(DISTINCT g.place_id) FROM observations o
+            JOIN geographies g ON g.id=o.geography_id JOIN place_classifications pc ON pc.place_id=g.place_id
+            WHERE o.indicator_id='ind_land_area_km2' AND pc.classification_scheme='UN_M49_LEVEL' AND pc.classification_code='country_or_area') AS countries_with_land_area,
+          (SELECT COUNT(DISTINCT g.place_id) FROM observations o
+            JOIN geographies g ON g.id=o.geography_id JOIN place_classifications pc ON pc.place_id=g.place_id
+            WHERE o.indicator_id='ind_population_density_km2' AND pc.classification_scheme='UN_M49_LEVEL' AND pc.classification_code='country_or_area') AS countries_with_density,
+          (SELECT COUNT(DISTINCT g.place_id) FROM observations o JOIN geographies g ON g.id=o.geography_id
+            WHERE o.indicator_id='ind_population_total' AND g.geography_type='city') AS cities_with_population,
+          (SELECT COUNT(DISTINCT g.place_id) FROM observations o JOIN geographies g ON g.id=o.geography_id
+            WHERE o.indicator_id='ind_land_area_km2' AND g.geography_type='city') AS cities_with_land_area,
+          (SELECT COUNT(DISTINCT g.place_id) FROM observations o JOIN geographies g ON g.id=o.geography_id
+            WHERE o.indicator_id='ind_population_density_km2' AND g.geography_type='city') AS cities_with_density,
+          (SELECT COUNT(*) FROM places WHERE place_kind='city' AND centroid_latitude IS NOT NULL AND centroid_longitude IS NOT NULL) AS cities_with_coordinates,
+          (SELECT COUNT(DISTINCT g.place_id) FROM observations o JOIN geographies g ON g.id=o.geography_id
+            WHERE o.indicator_id='ind_population_total' AND g.geography_type='lower_tier_local_authority') AS uk_authorities_with_population,
+          (SELECT COUNT(DISTINCT g.place_id) FROM observations o JOIN geographies g ON g.id=o.geography_id
+            WHERE o.indicator_id='ind_population_total' AND g.geography_type='electoral_ward') AS uk_wards_with_population`)
       .first<Row>();
     if (!row) throw new Error("Coverage query returned no result");
     return {
@@ -313,6 +332,14 @@ export class D1RegistryReadRepository implements RegistryReadRepository {
         row.first_population_year == null ? null : Number(row.first_population_year),
       lastPopulationYear:
         row.last_population_year == null ? null : Number(row.last_population_year),
+      countriesWithLandArea: Number(row.countries_with_land_area),
+      countriesWithDensity: Number(row.countries_with_density),
+      citiesWithPopulation: Number(row.cities_with_population),
+      citiesWithLandArea: Number(row.cities_with_land_area),
+      citiesWithDensity: Number(row.cities_with_density),
+      citiesWithCoordinates: Number(row.cities_with_coordinates),
+      ukAuthoritiesWithPopulation: Number(row.uk_authorities_with_population),
+      ukWardsWithPopulation: Number(row.uk_wards_with_population),
     };
   }
 }

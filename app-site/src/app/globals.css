@@ -128,6 +128,10 @@ h2 {
 .details, .provenance { max-width: 50rem; padding: 2rem 0; border-top: 1px solid var(--line); }
 dl { display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: .75rem 1.5rem; }
 dd { margin: 0; line-height: 1.5; }
+.machine-value { max-width: 100%; overflow-wrap: anywhere; }
+.record-actions { display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 2rem 0; }
+.place-record-metrics { grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); }
+.place-record-metrics small { display: block; margin-top: .6rem; color: var(--muted); }
 a { color: var(--accent); }
 button { padding: .7rem 1rem; border: 1px solid var(--line); border-radius: 4px; background: var(--accent); color: var(--background); font-weight: 700; }
 

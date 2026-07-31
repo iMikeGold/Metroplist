@@ -76,6 +76,14 @@ export interface CoverageSummary {
   capitalRelationships: number;
   firstPopulationYear: number | null;
   lastPopulationYear: number | null;
+  countriesWithLandArea: number;
+  countriesWithDensity: number;
+  citiesWithPopulation: number;
+  citiesWithLandArea: number;
+  citiesWithDensity: number;
+  citiesWithCoordinates: number;
+  ukAuthoritiesWithPopulation: number;
+  ukWardsWithPopulation: number;
 }
 
 export interface RegistryReadRepository {

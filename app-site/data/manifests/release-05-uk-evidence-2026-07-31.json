@@ -1,0 +1,39 @@
+{
+  "counts": {
+    "localAuthorities": 331,
+    "populationObservationsGenerated": 23889,
+    "wardsResolvedToDecember2022Geography": 7634,
+    "wardsReturnedByTs001": 7638
+  },
+  "generatedAt": "2026-07-31",
+  "generatedSqlSha256": "7e622344d7f945d4bc9f68eb89ac01911216c817675a7be010bd903ebd67f051",
+  "sources": {
+    "ltla": {
+      "sha256": "d56cd940b92c242f307783d63de63b5a6ccfd640cdef094530ddd8b1b792745f"
+    },
+    "ward": {
+      "sha256": "a7b0b3d13b3fb197048acb6ccf53cbec1eb83514d3224041dcfe82b3b7ef3a58"
+    },
+    "ward_features": {
+      "sha256": "9cef2a4c1d66b30981e3d07bcad2104b2131545e24f76b9abcab8c414f74a65a"
+    }
+  },
+  "unresolvedWardRows": [
+    {
+      "code": "E05R14284",
+      "name": "Hunmanby & Sherburn (part Ryedale)"
+    },
+    {
+      "code": "E05S14284",
+      "name": "Hunmanby & Sherburn (part Scarborough)"
+    },
+    {
+      "code": "E06000053",
+      "name": "Isles of Scilly"
+    },
+    {
+      "code": "E09000001",
+      "name": "City of London"
+    }
+  ]
+}

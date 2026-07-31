@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: "%s | Metroplist",
   },
   description:
-    "Explore places, populations and geographical evidence across the world.",
+    "Explore places, populations and comparisons across the world.",
   metadataBase: new URL("https://app.metroplist.com"),
   manifest: "/assets/favicons/grey_teal/site.webmanifest",
   icons: {

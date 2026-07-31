@@ -142,7 +142,7 @@ def generate_sql(lads: list[dict[str, str]], buas: list[dict[str, str]], hashes:
             continue
         place_id = existing.get(code, f"place_ons_{code.lower()}")
         lines.append(
-            f"INSERT OR IGNORE INTO places (id,slug,canonical_name,place_kind,country_code,parent_place_id,status) VALUES ({q(place_id)},{q(slugify(name) + '-' + code.lower())},{q(name)},'district','GB',{q(nation_parent[code[0]])},'current');"
+            f"INSERT OR IGNORE INTO places (id,slug,canonical_name,place_kind,country_code,parent_place_id,status,centroid_latitude,centroid_longitude) VALUES ({q(place_id)},{q(slugify(name) + '-' + code.lower())},{q(name)},'district','GB',{q(nation_parent[code[0]])},'current',{q(row.get('LAT'))},{q(row.get('LONG'))});"
         )
         lines.append(
             f"INSERT OR IGNORE INTO place_names (id,place_id,name,name_type,is_primary) VALUES ({q('name_ons_' + code.lower())},{q(place_id)},{q(name)},'official',1);"
@@ -199,7 +199,7 @@ def main() -> None:
     args = parser.parse_args()
     lad_path, bua_path = args.raw_dir / "lad-2021.json", args.raw_dir / "bua-2022.json"
     if args.acquire:
-        acquire(LAD_URL, ["LAD21CD", "LAD21NM", "LAD21NMW"], lad_path, 2000)
+        acquire(LAD_URL, ["LAD21CD", "LAD21NM", "LAD21NMW", "LONG", "LAT"], lad_path, 2000)
         acquire(BUA_URL, ["BUA22CD", "BUA22NM", "BUA22NMW"], bua_path, 1000)
     if not lad_path.exists() or not bua_path.exists():
         raise SystemExit("Missing UK source assets. Run with --acquire.")
