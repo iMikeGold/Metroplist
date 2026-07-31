@@ -1,10 +1,12 @@
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const links = [
   ["Explore", "#explore"],
   ["System", "#system"],
   ["Stories", "#stories"],
-  ["Method", "#method"]
+  ["Method", "#method"],
+  ["Explore the Atlas", "https://app.metroplist.com"]
 ];
 
 export default function MobileNavigation() {
@@ -22,6 +24,16 @@ export default function MobileNavigation() {
         id="mobile-navigation"
         className="absolute inset-x-0 top-full border-b border-graphite/10 bg-soft-white px-5 py-3 shadow-lg"
       >
+        <div className="mx-auto mb-3 flex max-w-7xl items-center gap-2 border-b border-graphite/10 pb-3">
+          <Image
+            src="/assets/brand/logos/metroplist-dv4-grey-teal.svg"
+            alt=""
+            width={28}
+            height={28}
+            className="h-7 w-7"
+          />
+          <span className="text-sm font-semibold text-graphite">Metroplist</span>
+        </div>
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-2">
           {links.map(([label, href]) => (
             <a

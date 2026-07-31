@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import MobileNavigation from "./mobile-navigation";
 
-const LOGO = "/assets/logos/metroplist-concept-d-density-master-transparent-v4.svg";
+const LOGO = "/assets/brand/logos/metroplist-dv4-grey-teal.svg";
 
 const imageSet = {
   hero: "/assets/images/web/connected-world-map.webp",
@@ -75,6 +75,12 @@ export default function Home() {
             <a href="#system" className="hover:text-graphite">System</a>
             <a href="#stories" className="hover:text-graphite">Stories</a>
             <a href="#method" className="hover:text-graphite">Method</a>
+            <a
+              href="https://app.metroplist.com"
+              className="inline-flex min-h-10 items-center gap-2 rounded-md bg-graphite px-4 font-semibold text-soft-white transition hover:bg-deep-ocean"
+            >
+              Explore the Atlas <ArrowUpRight size={16} />
+            </a>
           </div>
           <MobileNavigation />
         </nav>
@@ -103,8 +109,8 @@ export default function Home() {
               Metroplist is a living data intelligence platform revealing the hidden patterns shaping people, places, systems and ideas.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#explore" className="inline-flex items-center gap-2 rounded-md bg-soft-white px-5 py-3 text-sm font-semibold text-graphite transition hover:bg-white">
-                Start exploring <ArrowUpRight size={17} />
+              <a href="https://app.metroplist.com" className="inline-flex items-center gap-2 rounded-md bg-soft-white px-5 py-3 text-sm font-semibold text-graphite transition hover:bg-white">
+                Explore the Atlas <ArrowUpRight size={17} />
               </a>
               <a href="#system" className="inline-flex items-center gap-2 rounded-md border border-white/30 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10">
                 See the system
