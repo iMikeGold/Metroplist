@@ -14,10 +14,15 @@
     "foundation:verify": "node scripts/verify-foundation.mjs",
     "verify": "npm run lint && npm run typecheck && npm run test && npm run foundation:verify",
     "db:migrate:local": "wrangler d1 migrations apply metroplist-app-local --local",
-    "db:seed:local": "wrangler d1 execute metroplist-app-local --local --file=database/seeds/0001_reference_data.sql"
-    ,"db:seed:evidence:local": "wrangler d1 execute metroplist-app-local --local --file=database/seeds/0002_greenwich_bromley_density_2021.sql"
+    "db:seed:local": "wrangler d1 execute metroplist-app-local --local --file=database/seeds/0001_reference_data.sql",
+    "db:seed:evidence:local": "wrangler d1 execute metroplist-app-local --local --file=database/seeds/0002_greenwich_bromley_density_2021.sql",
+    "build:cloudflare": "opennextjs-cloudflare build",
+    "preview:cloudflare": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy:cloudflare": "opennextjs-cloudflare deploy",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts --include-runtime false"
   },
   "dependencies": {
+    "@opennextjs/cloudflare": "1.20.2",
     "next": "16.2.12",
     "react": "19.2.4",
     "react-dom": "19.2.4",

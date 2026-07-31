@@ -1,13 +1,23 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
+  "main": ".open-next/worker.js",
   "name": "metroplist-app",
   "compatibility_date": "2026-07-30",
-  "d1_databases": [
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
     {
-      "binding": "DB",
-      "database_name": "metroplist-app-local",
-      "database_id": "00000000-0000-0000-0000-000000000000",
-      "migrations_dir": "database/migrations"
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "metroplist-app"
     }
-  ]
+  ],
+  "images": {
+    "binding": "IMAGES"
+  }
 }
