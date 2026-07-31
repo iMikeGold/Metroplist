@@ -11,7 +11,7 @@ export async function compareDensityEvidence(originSlug: string, targetSlug: str
     repository.findDensityBySlug(targetSlug, referenceYear),
   ]);
   if (!origin || !target) return { status: "verified_data_not_available" as const };
-  const compatible = origin.geographyType === target.geographyType && origin.administrativeLevel === target.administrativeLevel && origin.referenceYear === target.referenceYear;
+  const compatible = origin.referenceYear === target.referenceYear;
   if (!compatible) return { status: "not_comparable" as const, origin, target };
   return {
     status: "ok" as const, origin, target, comparisonMode: "like_for_like" as const,

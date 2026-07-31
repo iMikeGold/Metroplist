@@ -20,6 +20,7 @@ const base: Observation = {
   qualityStatus: "verified",
   preferredStatus: "preferred",
   isEstimate: false,
+  evidenceStatus: "reported",
   methodologyVersion: "v1",
 };
 

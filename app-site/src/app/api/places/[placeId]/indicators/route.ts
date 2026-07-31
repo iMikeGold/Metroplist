@@ -12,5 +12,6 @@ export async function GET(
     return NextResponse.json({ error: "Place not found." }, { status: 404 });
   }
   const indicators = await repositories.registry.listPlaceIndicators(placeId);
-  return NextResponse.json({ place, indicators });
+  const evidence = await repositories.registry.listPlaceIndicatorEvidence(placeId);
+  return NextResponse.json({ place, indicators, evidence });
 }

@@ -2,7 +2,7 @@
   "name": "metroplist-app-site",
   "version": "0.1.0",
   "private": true,
-  "description": "Metroplist Data Foundation and Density Explorer — Release 0.1",
+  "description": "Metroplist geographical evidence platform",
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
@@ -21,6 +21,7 @@
     "db:seed:evidence:remote": "wrangler d1 execute metroplist-data --remote --file=database/seeds/0002_greenwich_bromley_density_2021.sql",
     "db:seed:map:remote": "wrangler d1 execute metroplist-data --remote --file=database/seeds/0003_map_manifest.sql",
     "db:verify:remote": "wrangler d1 execute metroplist-data --remote --command=\"SELECT (SELECT COUNT(*) FROM places) AS places, (SELECT COUNT(*) FROM observations) AS observations, (SELECT COUNT(*) FROM calculations) AS calculations, (SELECT COUNT(*) FROM observation_lineage) AS lineage;\"",
+    "db:search:rebuild:remote": "wrangler d1 execute metroplist-data --remote --file=database/maintenance/rebuild_place_search_entries.sql",
     "db:export:remote": "wrangler d1 export metroplist-data --remote --output=data/exports/metroplist-data.sql",
     "ingest:world:acquire": "python3 scripts/ingest/acquire-world-data.py --acquire",
     "ingest:world:generate": "python3 scripts/ingest/acquire-world-data.py",

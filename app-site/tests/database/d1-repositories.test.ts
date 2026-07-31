@@ -36,12 +36,12 @@ describe("D1 repositories", () => {
       geographyType: "country_or_area",
     });
     expect(db.statements[0].values).toEqual([
-      "Lon%' OR 1=1",
-      "Lon%' OR 1=1",
-      "Lon%' OR 1=1",
-      "Lon%' OR 1=1",
-      "Lon%' OR 1=1%",
-      "Lon%' OR 1=1%",
+      "lon%' or 1=1",
+      "lon%' or 1=1",
+      "lon%' or 1=1",
+      "lon%' or 1=1",
+      "lon%' or 1=1\uffff",
+      "lon%' or 1=1",
       "GB",
       "GB",
       "country_or_area",
@@ -49,7 +49,9 @@ describe("D1 repositories", () => {
       25,
     ]);
     expect(db.statements[0].sql).not.toContain("Lon%' OR 1=1");
-    expect(db.statements[0].sql).toContain("ORDER BY r.rank");
+    expect(db.statements[0].sql).toContain("ORDER BY");
+    expect(db.statements[0].sql).toContain("place_search_entries");
+    expect(db.statements[0].sql).not.toContain("UNION ALL");
   });
 
   it("uses indexed observation predicates and explicit preferred filtering", async () => {

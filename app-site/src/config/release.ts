@@ -1,5 +1,5 @@
 export const FOUNDATION_RELEASE = {
-  name: "Metroplist Data Foundation and Density Explorer — Release 0.1",
-  version: "0.1.0",
-  status: "foundation established",
+  name: "Metroplist",
+  version: "0.2.0",
+  status: "world registry established",
 } as const;

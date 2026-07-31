@@ -25,6 +25,59 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--line);
+  background: rgba(7, 16, 22, 0.94);
+  backdrop-filter: blur(14px);
+}
+
+.site-navigation {
+  display: flex;
+  width: min(72rem, calc(100% - 2rem));
+  min-height: 4.5rem;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-brand img {
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0.2rem;
+  border-radius: 4px;
+  background: var(--text);
+}
+
+.site-links {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.site-links a {
+  color: var(--muted);
+  font-size: 0.88rem;
+  text-decoration: none;
+}
+
+.site-links a:hover {
+  color: var(--text);
+}
+
 main {
   width: min(72rem, calc(100% - 2rem));
   margin: 0 auto;
@@ -101,6 +154,79 @@ button { padding: .7rem 1rem; border: 1px solid var(--line); border-radius: 4px;
   color: var(--text);
 }
 
+.primary-actions {
+  display: grid;
+  grid-template-columns: auto minmax(20rem, 32rem) auto;
+  gap: 0.75rem;
+  align-items: end;
+  margin-top: 2rem;
+}
+
+.primary-link,
+.secondary-link {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.primary-link {
+  background: var(--accent);
+  color: var(--background);
+  font-weight: 700;
+}
+
+.primary-actions form label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.primary-actions form div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.primary-actions input {
+  min-width: 0;
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 4px 0 0 4px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+.primary-actions form button {
+  border-radius: 0 4px 4px 0;
+}
+
+.platform-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.platform-summary div {
+  display: grid;
+  gap: 0.4rem;
+  padding: 1.5rem 0;
+}
+
+.platform-summary strong {
+  font-size: 1.7rem;
+}
+
+.platform-summary span {
+  color: var(--muted);
+}
+
 .panel {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(18rem, 1fr);
@@ -153,12 +279,12 @@ li {
   display: grid;
   grid-template-columns: minmax(19rem, 25rem) minmax(0, 1fr);
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 4.5rem);
 }
 
 .atlas-sidebar {
   z-index: 1;
-  max-height: 100vh;
+  max-height: calc(100vh - 4.5rem);
   overflow: auto;
   padding: 2rem;
   border-right: 1px solid var(--line);
@@ -254,30 +380,176 @@ li {
 
 .atlas-map-band {
   position: relative;
-  min-height: 100vh;
+  height: calc(100vh - 4.5rem);
+  min-height: calc(100vh - 4.5rem);
 }
 
 .atlas-map {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.map-disclosure {
+.atlas-map .maplibregl-ctrl button {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  color: inherit;
+  font-weight: 400;
+}
+
+.map-error {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  z-index: 2;
+  width: min(28rem, calc(100% - 2rem));
+  margin: 0;
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  background: rgba(7, 16, 22, 0.94);
+  color: var(--text);
+  transform: translateX(-50%);
+}
+
+.comparison-composer {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.comparison-picker form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+}
+
+.comparison-picker label {
+  display: grid;
+  gap: 0.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.comparison-picker input {
+  min-width: 0;
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 4px 0 0 4px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+.comparison-picker form button {
+  border-radius: 0 4px 4px 0;
+}
+
+.comparison-selection {
+  grid-column: 1 / -1;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.indicator-picker {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 32rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.indicator-picker select {
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+.comparison-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.comparison-actions .secondary-action {
+  width: auto;
+  margin: 0;
+}
+
+.map-information {
   position: absolute;
   right: 0.75rem;
   bottom: 0.75rem;
-  max-width: 26rem;
-  margin: 0;
-  padding: 0.6rem 0.75rem;
+}
+
+.map-information summary {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
   border: 1px solid var(--line);
+  border-radius: 50%;
   background: rgba(7, 16, 22, 0.9);
+  color: var(--text);
+  cursor: pointer;
+  list-style: none;
+}
+
+.map-information p {
+  position: absolute;
+  right: 0;
+  bottom: 2.5rem;
+  width: min(22rem, calc(100vw - 2rem));
+  margin: 0;
+  padding: 0.7rem;
+  border: 1px solid var(--line);
+  background: rgba(7, 16, 22, 0.96);
   color: var(--muted);
   font-size: 0.72rem;
   line-height: 1.4;
 }
 
 @media (max-width: 760px) {
+  .site-navigation {
+    min-height: 4rem;
+    gap: 0.75rem;
+  }
+
+  .site-brand span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .site-brand img {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .site-links {
+    gap: 0.65rem;
+  }
+
+  .site-links a {
+    font-size: 0.7rem;
+  }
+
   .atlas-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .primary-actions,
+  .platform-summary,
+  .comparison-composer {
     grid-template-columns: 1fr;
   }
 
@@ -288,6 +560,7 @@ li {
   }
 
   .atlas-map-band {
+    height: 65vh;
     min-height: 65vh;
   }
 }

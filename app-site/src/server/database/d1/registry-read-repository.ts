@@ -2,6 +2,7 @@ import type { D1DatabaseLike } from "@/server/database/types";
 import type {
   CoverageSummary,
   PlaceDetail,
+  PlaceIndicatorEvidence,
   PlaceIndicatorSummary,
   PlaceSearchQuery,
   PlaceSearchResult,
@@ -14,7 +15,15 @@ function splitList(value: unknown): string[] {
   return value ? String(value).split("\u001f").filter(Boolean) : [];
 }
 
+function normalizeSearchValue(value: string): string {
+  return value.normalize("NFKC").trim().toLocaleLowerCase("en");
+}
+
 function mapSearchResult(row: Row): PlaceSearchResult {
+  const matchedBy =
+    row.matched_entry_type === "official_identifier"
+      ? "identifier"
+      : (String(row.matched_entry_type) as PlaceSearchResult["matchedBy"]);
   return {
     id: String(row.id),
     slug: String(row.slug),
@@ -25,7 +34,9 @@ function mapSearchResult(row: Row): PlaceSearchResult {
     parentPlaceId: row.parent_place_id ? String(row.parent_place_id) : null,
     parentName: row.parent_name ? String(row.parent_name) : null,
     geographyTypes: splitList(row.geography_types),
-    matchedBy: String(row.matched_by) as PlaceSearchResult["matchedBy"],
+    matchedBy,
+    matchedValue: String(row.matched_display_value ?? row.canonical_name),
+    matchClass: row.match_class === "prefix" ? "prefix" : "exact",
     ambiguous: Number(row.name_match_count) > 1,
   };
 }
@@ -40,55 +51,83 @@ export class D1RegistryReadRepository implements RegistryReadRepository {
     const countryCode = input.countryCode?.trim().toUpperCase() || null;
     const geographyType = input.geographyType?.trim() || null;
     const sql = `
-      WITH matches AS (
-        SELECT id AS place_id, 0 AS rank, 'slug' AS matched_by FROM places WHERE slug = ? COLLATE NOCASE
-        UNION ALL
-        SELECT place_id, 1, 'identifier' FROM place_identifiers WHERE identifier = ? COLLATE NOCASE
-        UNION ALL
-        SELECT id, 2, 'canonical_name' FROM places WHERE canonical_name = ? COLLATE NOCASE
-        UNION ALL
-        SELECT place_id, 3, 'alias' FROM place_names WHERE name = ? COLLATE NOCASE
-        UNION ALL
-        SELECT id, 4, 'canonical_name' FROM places WHERE canonical_name LIKE ? COLLATE NOCASE
-        UNION ALL
-        SELECT place_id, 5, 'alias' FROM place_names WHERE name LIKE ? COLLATE NOCASE
+      WITH matched_entries AS (
+        SELECT entry.place_id, entry.entry_type, entry.display_value,
+          entry.is_primary, entry.ranking_weight,
+          CASE
+            WHEN entry.normalized_value = ? COLLATE NOCASE
+              THEN 'exact'
+            ELSE 'prefix'
+          END AS match_class,
+          CASE
+            WHEN entry.normalized_value = ? COLLATE NOCASE
+              THEN entry.ranking_weight
+            ELSE entry.ranking_weight + 10
+          END AS match_rank,
+          ROW_NUMBER() OVER (
+            PARTITION BY entry.place_id
+            ORDER BY
+              CASE
+                WHEN entry.normalized_value = ? COLLATE NOCASE
+                  THEN entry.ranking_weight
+                ELSE entry.ranking_weight + 10
+              END,
+              entry.is_primary DESC,
+              LENGTH(entry.display_value),
+              entry.entry_type,
+              entry.display_value COLLATE NOCASE
+          ) AS entry_rank
+        FROM place_search_entries entry
+        WHERE entry.normalized_value >= ? COLLATE NOCASE
+          AND entry.normalized_value < ? COLLATE NOCASE
+          AND (
+            entry.entry_type <> 'official_identifier'
+            OR entry.normalized_value = ? COLLATE NOCASE
+          )
       ),
-      ranked AS (
-        SELECT place_id, MIN(rank) AS rank,
-          CASE MIN(rank)
-            WHEN 0 THEN 'slug' WHEN 1 THEN 'identifier'
-            WHEN 2 THEN 'canonical_name' ELSE 'alias'
-          END AS matched_by
-        FROM matches GROUP BY place_id
+      ranked_candidates AS (
+        SELECT hit.place_id, hit.entry_type AS matched_entry_type,
+          hit.display_value AS matched_display_value, hit.match_class,
+          hit.is_primary, hit.ranking_weight, hit.match_rank,
+          COUNT(*) OVER () AS name_match_count
+        FROM matched_entries hit
+        JOIN places candidate ON candidate.id = hit.place_id
+        WHERE hit.entry_rank = 1
+          AND (? IS NULL OR candidate.country_code = ?)
+          AND (? IS NULL OR EXISTS (
+            SELECT 1 FROM geographies candidate_geography
+            WHERE candidate_geography.place_id = candidate.id
+              AND candidate_geography.geography_type = ?
+          ))
+        ORDER BY hit.match_rank, hit.is_primary DESC,
+          LENGTH(hit.display_value), candidate.canonical_name COLLATE NOCASE,
+          candidate.place_kind, candidate.id
+        LIMIT ?
       )
-      SELECT p.*, parent.canonical_name AS parent_name, r.matched_by,
-        (SELECT COUNT(DISTINCT p2.id)
-          FROM places p2 LEFT JOIN place_names n2 ON n2.place_id = p2.id
-          WHERE p2.canonical_name = p.canonical_name COLLATE NOCASE
-             OR n2.name = p.canonical_name COLLATE NOCASE) AS name_match_count,
+      SELECT p.*, parent.canonical_name AS parent_name,
+        candidate.matched_entry_type, candidate.matched_display_value,
+        candidate.match_class, candidate.ranking_weight, candidate.match_rank,
+        candidate.name_match_count,
         (SELECT GROUP_CONCAT(geography_type, char(31))
           FROM (SELECT DISTINCT geography_type
             FROM geographies WHERE place_id = p.id)) AS geography_types
-      FROM ranked r
-      JOIN places p ON p.id = r.place_id
+      FROM ranked_candidates candidate
+      JOIN places p ON p.id = candidate.place_id
       LEFT JOIN places parent ON parent.id = p.parent_place_id
-      WHERE (? IS NULL OR p.country_code = ?)
-        AND (? IS NULL OR EXISTS (
-          SELECT 1 FROM geographies g
-          WHERE g.place_id = p.id AND g.geography_type = ?
-        ))
-      ORDER BY r.rank, p.canonical_name COLLATE NOCASE, p.place_kind, p.id
-      LIMIT ?`;
-    const prefix = `${query}%`;
+      ORDER BY candidate.match_rank, candidate.is_primary DESC,
+        LENGTH(candidate.matched_display_value),
+        p.canonical_name COLLATE NOCASE, p.place_kind, p.id`;
+    const normalizedQuery = normalizeSearchValue(query);
+    const prefixUpperBound = `${normalizedQuery}\uffff`;
     const result = await this.db
       .prepare(sql)
       .bind(
-        query,
-        query,
-        query,
-        query,
-        prefix,
-        prefix,
+        normalizedQuery,
+        normalizedQuery,
+        normalizedQuery,
+        normalizedQuery,
+        prefixUpperBound,
+        normalizedQuery,
         countryCode,
         countryCode,
         geographyType,
@@ -103,7 +142,8 @@ export class D1RegistryReadRepository implements RegistryReadRepository {
     const row = await this.db
       .prepare(`
         SELECT p.*, parent.canonical_name AS parent_name,
-          'slug' AS matched_by, 1 AS name_match_count,
+          'slug' AS matched_entry_type, p.slug AS matched_display_value,
+          'exact' AS match_class, 1 AS name_match_count,
           (SELECT GROUP_CONCAT(geography_type, char(31))
             FROM (SELECT DISTINCT geography_type
               FROM geographies WHERE place_id = p.id)) AS geography_types,
@@ -157,7 +197,12 @@ export class D1RegistryReadRepository implements RegistryReadRepository {
           MAX(po.reference_year) AS last_year,
           MAX(CASE WHEN po.latest_rank = 1 THEN po.value_numeric END) AS latest_value,
           MAX(CASE WHEN po.latest_rank = 1 THEN po.reference_year END) AS latest_year,
-          MAX(CASE WHEN po.latest_rank = 1 THEN po.is_estimate END) AS is_estimate
+          MAX(CASE WHEN po.latest_rank = 1 THEN po.is_estimate END) AS is_estimate,
+          MAX(CASE WHEN po.latest_rank = 1 THEN po.methodology_version END) AS methodology_version,
+          MAX(CASE WHEN po.latest_rank = 1 THEN po.quality_status END) AS quality_status,
+          MAX(CASE WHEN po.latest_rank = 1 THEN po.preferred_status END) AS preferred_status,
+          MAX(CASE WHEN po.latest_rank = 1 THEN po.evidence_status END) AS evidence_status,
+          MAX(CASE WHEN po.latest_rank = 1 THEN po.dataset_release_id END) AS dataset_release_id
         FROM place_observations po
         JOIN indicators i ON i.id = po.indicator_id
         JOIN units u ON u.id = po.unit_id
@@ -176,6 +221,64 @@ export class D1RegistryReadRepository implements RegistryReadRepository {
       latestValue: row.latest_value == null ? null : Number(row.latest_value),
       latestYear: row.latest_year == null ? null : Number(row.latest_year),
       estimate: Number(row.is_estimate) === 1,
+      methodologyVersion:
+        row.methodology_version == null ? null : String(row.methodology_version),
+      qualityStatus: String(row.quality_status),
+      preferredStatus: String(row.preferred_status),
+      observationStatus: String(row.evidence_status) as
+        | "reported"
+        | "estimate"
+        | "projection"
+        | "awaiting_review",
+      sourceReleaseId:
+        row.dataset_release_id == null ? null : String(row.dataset_release_id),
+    }));
+  }
+
+  async listPlaceIndicatorEvidence(placeId: string): Promise<PlaceIndicatorEvidence[]> {
+    const result = await this.db
+      .prepare(`
+        SELECT o.id AS observation_id, i.code AS indicator_code,
+          i.canonical_name AS indicator_name, u.symbol,
+          o.value_numeric, o.reference_year, o.reference_period_start,
+          o.reference_period_end, o.methodology_version, o.quality_status,
+          o.preferred_status, o.is_estimate, o.evidence_status, o.dataset_release_id,
+          g.id AS geography_id, g.geography_type
+        FROM observations o
+        JOIN geographies g ON g.id = o.geography_id
+        JOIN indicators i ON i.id = o.indicator_id
+        JOIN units u ON u.id = o.unit_id
+        WHERE g.place_id = ?
+          AND o.preferred_status = 'preferred'
+          AND o.quality_status IN ('verified', 'qualified')
+        ORDER BY i.code, o.reference_year DESC, o.verified_at DESC, o.id`)
+      .bind(placeId)
+      .all<Row>();
+    return (result.results ?? []).map((row) => ({
+      observationId: String(row.observation_id),
+      indicatorCode: String(row.indicator_code),
+      indicatorName: String(row.indicator_name),
+      unit: String(row.symbol),
+      value: row.value_numeric == null ? null : Number(row.value_numeric),
+      referenceYear: row.reference_year == null ? null : Number(row.reference_year),
+      referencePeriodStart:
+        row.reference_period_start == null ? null : String(row.reference_period_start),
+      referencePeriodEnd:
+        row.reference_period_end == null ? null : String(row.reference_period_end),
+      methodologyVersion:
+        row.methodology_version == null ? null : String(row.methodology_version),
+      qualityStatus: String(row.quality_status),
+      preferredStatus: String(row.preferred_status),
+      estimate: Number(row.is_estimate) === 1,
+      observationStatus: String(row.evidence_status) as
+        | "reported"
+        | "estimate"
+        | "projection"
+        | "awaiting_review",
+      sourceReleaseId:
+        row.dataset_release_id == null ? null : String(row.dataset_release_id),
+      geographyId: String(row.geography_id),
+      geographyType: String(row.geography_type),
     }));
   }
 

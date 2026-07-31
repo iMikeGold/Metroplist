@@ -25,6 +25,8 @@ export function mapObservation(row: Record<string, unknown>): Observation {
     referenceYear: row.reference_year as number | null, publicationDate: row.publication_date as string | null,
     ingestedAt: String(row.ingested_at), verifiedAt: row.verified_at as string | null,
     qualityStatus: row.quality_status as Observation["qualityStatus"], preferredStatus: row.preferred_status as Observation["preferredStatus"],
-    isEstimate: Number(row.is_estimate) === 1, methodologyVersion: row.methodology_version as string | null,
+    isEstimate: Number(row.is_estimate) === 1,
+    evidenceStatus: row.evidence_status as Observation["evidenceStatus"],
+    methodologyVersion: row.methodology_version as string | null,
   };
 }

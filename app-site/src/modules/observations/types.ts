@@ -16,6 +16,11 @@ export const PREFERRED_STATUSES = [
 
 export type QualityStatus = (typeof QUALITY_STATUSES)[number];
 export type PreferredStatus = (typeof PREFERRED_STATUSES)[number];
+export type EvidenceStatus =
+  | "reported"
+  | "estimate"
+  | "projection"
+  | "awaiting_review";
 
 export interface Observation {
   id: string;
@@ -35,5 +40,6 @@ export interface Observation {
   qualityStatus: QualityStatus;
   preferredStatus: PreferredStatus;
   isEstimate: boolean;
+  evidenceStatus: EvidenceStatus;
   methodologyVersion: string | null;
 }

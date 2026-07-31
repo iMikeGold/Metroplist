@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import type { Map as MapLibreMap } from "maplibre-gl";
 import { requestLocationHint } from "@/modules/location";
 
@@ -27,31 +27,60 @@ interface Indicator {
   estimate: boolean;
 }
 
-export function AtlasExplorer() {
+export function AtlasExplorer({ initialQuery = "" }: { initialQuery?: string }) {
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<MapLibreMap | null>(null);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(initialQuery);
   const [candidates, setCandidates] = useState<Candidate[]>([]);
   const [selected, setSelected] = useState<PlaceDetail | null>(null);
   const [indicators, setIndicators] = useState<Indicator[]>([]);
   const [message, setMessage] = useState("Search the canonical registry.");
+  const [mapStatus, setMapStatus] = useState<"loading" | "ready" | "error">(
+    "loading",
+  );
 
   useEffect(() => {
     if (!container.current || map.current) return;
     let disposed = false;
     void import("maplibre-gl").then(({ Map, NavigationControl }) => {
       if (disposed || !container.current) return;
-      map.current = new Map({
+      const atlasMap = new Map({
         container: container.current,
-        style: "https://demotiles.maplibre.org/style.json",
+        style: {
+          version: 8,
+          sources: {
+            openStreetMap: {
+              type: "raster",
+              tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
+              tileSize: 256,
+              attribution:
+                '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',
+            },
+          },
+          layers: [
+            {
+              id: "open-street-map",
+              type: "raster",
+              source: "openStreetMap",
+            },
+          ],
+        },
         center: [0, 18],
         zoom: 1.35,
         attributionControl: {
           customAttribution:
-            '<a href="https://maplibre.org/" target="_blank">MapLibre</a> · <a href="https://demotiles.maplibre.org/" target="_blank">Demo tiles</a>',
+            '<a href="https://maplibre.org/" target="_blank">MapLibre</a>',
         },
       });
-      map.current.addControl(new NavigationControl(), "top-right");
+      atlasMap.on("idle", () => {
+        if (atlasMap.isSourceLoaded("openStreetMap")) setMapStatus("ready");
+      });
+      atlasMap.on("error", (event) => {
+        console.error("Metroplist Atlas map source error", event.error);
+        setMapStatus("error");
+      });
+      atlasMap.addControl(new NavigationControl(), "top-right");
+      map.current = atlasMap;
     });
     return () => {
       disposed = true;
@@ -60,21 +89,38 @@ export function AtlasExplorer() {
     };
   }, []);
 
-  async function search(event: FormEvent) {
-    event.preventDefault();
-    const response = await fetch(`/api/places?q=${encodeURIComponent(query)}&limit=12`);
+  const runSearch = useCallback(async (term: string, locationCandidate = false) => {
+    const submittedQuery = term.trim();
+    if (!submittedQuery) return;
+    setQuery(submittedQuery);
+    const response = await fetch(`/api/places?q=${encodeURIComponent(submittedQuery)}&limit=12`);
     if (!response.ok) {
       setCandidates([]);
-      setMessage("Place search is temporarily unavailable.");
+      setMessage("Place search could not connect to the Metroplist registry.");
       return;
     }
     const payload = await response.json();
     setCandidates(payload.candidates ?? []);
     setMessage(
       payload.candidates?.length
-        ? `${payload.candidates.length} candidate${payload.candidates.length === 1 ? "" : "s"} found.`
+        ? locationCandidate
+          ? `Your approximate location appears to be ${submittedQuery}. Choose the matching place.`
+          : `${payload.candidates.length} candidate${payload.candidates.length === 1 ? "" : "s"} found.`
         : "No canonical place matched this prefix.",
     );
+  }, []);
+
+  useEffect(() => {
+    if (!initialQuery) return;
+    const searchTimer = window.setTimeout(() => {
+      void runSearch(initialQuery);
+    }, 0);
+    return () => window.clearTimeout(searchTimer);
+  }, [initialQuery, runSearch]);
+
+  async function search(event: FormEvent) {
+    event.preventDefault();
+    await runSearch(query);
   }
 
   async function selectPlace(placeId: string) {
@@ -99,15 +145,17 @@ export function AtlasExplorer() {
 
   async function useLocationHint() {
     const hint = await requestLocationHint();
-    if (hint.available && hint.latitude != null && hint.longitude != null && map.current) {
-      map.current.flyTo({ center: [hint.longitude, hint.latitude], zoom: 6 });
+    const candidateText = hint.available
+      ? hint.city ?? hint.region ?? hint.countryCode
+      : null;
+    if (candidateText) {
+      await runSearch(candidateText, true);
+      return;
     }
     setMessage(
-      hint.available && hint.city
-        ? `Coarse network hint: ${hint.city}. Confirmation is still required.`
-        : hint.available
-          ? "No city-level coarse hint was available. Confirmation is still required."
-          : hint.reason,
+      hint.available
+        ? "Your approximate location could not be matched to a place."
+        : hint.reason,
     );
   }
 
@@ -132,7 +180,7 @@ export function AtlasExplorer() {
           </div>
         </form>
         <button className="secondary-action" type="button" onClick={useLocationHint}>
-          Use coarse location hint
+          Use my approximate location
         </button>
         <p className="atlas-message" role="status">{message}</p>
         <div className="atlas-results">
@@ -145,7 +193,7 @@ export function AtlasExplorer() {
             >
               <strong>{candidate.canonicalName}</strong>
               <span>
-                {candidate.placeKind}
+                {candidate.geographyTypes.join(", ") || candidate.placeKind}
                 {candidate.parentName ? ` · ${candidate.parentName}` : ""}
               </span>
             </button>
@@ -173,11 +221,20 @@ export function AtlasExplorer() {
         ) : null}
       </aside>
       <section className="atlas-map-band" aria-label="Interactive world map">
-        <div ref={container} className="atlas-map" />
-        <p className="map-disclosure">
-          Contextual MapLibre demo basemap. Display boundaries are not Metroplist
-          statistical boundary evidence.
-        </p>
+        <div
+          ref={container}
+          className="atlas-map"
+          data-map-state={mapStatus}
+        />
+        {mapStatus === "error" ? (
+          <p className="map-error" role="status">
+            The contextual map could not be loaded. Place search remains available.
+          </p>
+        ) : null}
+        <details className="map-information">
+          <summary aria-label="Map information">i</summary>
+          <p>Map shown for orientation. Verified statistical boundaries are identified separately.</p>
+        </details>
       </section>
     </div>
   );
