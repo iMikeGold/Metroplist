@@ -20,6 +20,13 @@ describe("observation evidence-status migration", () => {
     expect(migration).toContain("CREATE TRIGGER observations_prevent_delete");
   });
 
+  it("declares separate fresh-bootstrap and populated-legacy paths", () => {
+    expect(migration).toContain("observation_migration_context");
+    expect(migration).toContain("'fresh_bootstrap'");
+    expect(migration).toContain("'legacy'");
+    expect(migration).toContain("DROP TABLE observation_migration_context");
+  });
+
   it("classifies WPP source and derived observations from release lineage", () => {
     expect(migration).toContain("dataset_release_id = 'rel_wpp_2024'");
     expect(migration).toContain("observation_lineage");

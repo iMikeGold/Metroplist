@@ -23,8 +23,8 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "metroplist-data",
-      "database_id": "32483de6-fc5b-4d94-9ca1-d3bd73a796d1",
+      "database_name": "metroplist-data-v2",
+      "database_id": "443d7d74-a820-4f5d-a4f4-493bb88b5cfa",
       "migrations_dir": "database/migrations"
     }
   ]

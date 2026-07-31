@@ -4,6 +4,18 @@ CREATE TABLE migration_0005_observation_evidence_status_applied (
   applied_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE observation_migration_context AS
+SELECT
+  COUNT(*) AS observation_count,
+  CASE
+    WHEN COUNT(*) = 0 THEN 'fresh_bootstrap'
+    ELSE 'legacy'
+  END AS migration_mode
+FROM observations;
+
+CREATE UNIQUE INDEX idx_observation_migration_context_mode
+  ON observation_migration_context(migration_mode);
+
 CREATE TABLE observations_next (
   id TEXT PRIMARY KEY,
   geography_id TEXT NOT NULL REFERENCES geographies(id),
@@ -280,7 +292,10 @@ SELECT 'Greenwich and Bromley evidence values',
   COUNT(*)
 FROM expected
 LEFT JOIN observations observation ON observation.id = expected.id
-WHERE (SELECT COUNT(*) FROM observations) > 0
+WHERE (
+    SELECT migration_mode
+    FROM observation_migration_context
+  ) = 'legacy'
   AND (
    observation.id IS NULL
    OR observation.indicator_id <> expected.indicator_id
@@ -315,7 +330,10 @@ LEFT JOIN (
     ON lineage.calculation_id = calculation.id
   GROUP BY calculation.id
 ) actual ON actual.id = expected.id
-WHERE (SELECT COUNT(*) FROM observations) > 0
+WHERE (
+    SELECT migration_mode
+    FROM observation_migration_context
+  ) = 'legacy'
   AND (
     actual.id IS NULL
     OR actual.input_count <> 2
@@ -328,3 +346,4 @@ FROM observations
 WHERE evidence_status = 'projection';
 
 DROP TABLE observation_migration_assertions;
+DROP TABLE observation_migration_context;
