@@ -148,3 +148,146 @@ li {
   .metrics { grid-template-columns: 1fr; }
   dl { grid-template-columns: 1fr; }
 }
+
+.atlas-shell {
+  display: grid;
+  grid-template-columns: minmax(19rem, 25rem) minmax(0, 1fr);
+  width: 100%;
+  min-height: 100vh;
+}
+
+.atlas-sidebar {
+  z-index: 1;
+  max-height: 100vh;
+  overflow: auto;
+  padding: 2rem;
+  border-right: 1px solid var(--line);
+  background: var(--background);
+}
+
+.atlas-sidebar h1 {
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.atlas-search label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.atlas-search div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.atlas-search input {
+  min-width: 0;
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 4px 0 0 4px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+.atlas-search button {
+  border-radius: 0 4px 4px 0;
+}
+
+.secondary-action {
+  width: 100%;
+  margin-top: 0.75rem;
+  background: transparent;
+  color: var(--accent);
+}
+
+.atlas-message {
+  margin: 1rem 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.atlas-results {
+  display: grid;
+  border-top: 1px solid var(--line);
+}
+
+.place-result {
+  display: grid;
+  gap: 0.25rem;
+  width: 100%;
+  padding: 0.8rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+  text-align: left;
+}
+
+.place-result span,
+.place-summary p {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.place-summary {
+  padding-top: 2rem;
+}
+
+.place-summary h2 {
+  font-size: 1.5rem;
+}
+
+.place-summary dl {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.place-summary dd {
+  margin-top: 0.25rem;
+}
+
+.atlas-map-band {
+  position: relative;
+  min-height: 100vh;
+}
+
+.atlas-map {
+  position: absolute;
+  inset: 0;
+}
+
+.map-disclosure {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  max-width: 26rem;
+  margin: 0;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--line);
+  background: rgba(7, 16, 22, 0.9);
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 760px) {
+  .atlas-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .atlas-sidebar {
+    max-height: none;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .atlas-map-band {
+    min-height: 65vh;
+  }
+}

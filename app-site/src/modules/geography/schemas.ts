@@ -11,7 +11,7 @@ export const placeSchema = z
     placeKind: z.enum(PLACE_KINDS),
     countryCode: z.string().length(2).nullable(),
     parentPlaceId: z.string().min(3).nullable(),
-    status: z.enum(["current", "historical", "proposed", "disputed"]),
+    status: z.enum(["current", "historical", "proposed", "disputed", "unresolved"]),
     validFrom: dateSchema.nullable(),
     validTo: dateSchema.nullable(),
   })

@@ -1,0 +1,2666 @@
+{
+  "retrievedAt": "2026-07-31",
+  "sourceUrl": "https://api.beta.ons.gov.uk/v1/datasets",
+  "sha256": "fe8038f20b889a67951df6a753babe712c98fa70b4e56ead7069911a3d1fd933",
+  "datasetCount": 337,
+  "publicationDecision": "catalogued_not_automatically_published",
+  "datasets": [
+    {
+      "id": "ageing-population-estimates",
+      "title": "Local authority ageing statistics, based on annual mid-year population estimates",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "ageing-population-projections",
+      "title": "Local authority ageing statistics, population projections for older people",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "ashe-table-5",
+      "title": "Earnings and Hours Worked, UK Region by Industry by Two-Digit SIC: ASHE Table 5",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "7"
+    },
+    {
+      "id": "ashe-tables-11-and-12",
+      "title": "Earnings and Hours Worked, Work and Residence-Based Travel to Work Area: ASHE Tables 11 and 12",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "ashe-tables-20",
+      "title": "Earnings and hours worked, age group by occupation by two-digit SOC: ASHE Table 20",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "5"
+    },
+    {
+      "id": "ashe-tables-25",
+      "title": "Earnings and hours worked, UK region by public and private sector: ASHE Table 25",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "7"
+    },
+    {
+      "id": "ashe-tables-26",
+      "title": "Earnings and hours worked, care workers: ASHE Table 26",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "8"
+    },
+    {
+      "id": "ashe-tables-27-and-28",
+      "title": "Earnings and hours worked, place of work and place of residence by local enterprise partnerships: ASHE Tables 27 and 28",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "ashe-tables-3",
+      "title": "Earnings and hours worked, region by occupation by two-digit SOC: ASHE Table 3",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "7"
+    },
+    {
+      "id": "ashe-tables-7-and-8",
+      "title": "Earnings and hours worked, place of work and residence by local authority: ASHE Tables 7 and 8 ",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "ashe-tables-9-and-10",
+      "title": "Earnings and hours worked, place of work and place of residence by Parliamentary constituency: ASHE Tables 9 and 10",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "7"
+    },
+    {
+      "id": "childrens-wellbeing",
+      "title": "Children's Well-being Measures",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "cpih01",
+      "title": "Consumer Prices Index including owner occupiers' housing costs (CPIH)",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "67"
+    },
+    {
+      "id": "faster-indicators-shipping-data",
+      "title": "Coronavirus and the latest indicators for the UK economy and society: Shipping indicators",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "75"
+    },
+    {
+      "id": "gdp-by-local-authority",
+      "title": "GDP by local authority",
+      "type": "filterable",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "gdp-to-four-decimal-places",
+      "title": "GDP monthly estimate (incorporating the Index of Services and Index of Production)",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "68"
+    },
+    {
+      "id": "generational-income",
+      "title": "Generational income: The effects of taxes and benefits",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "gva-by-industry-by-local-authority",
+      "title": "GVA by industry by local authority",
+      "type": "filterable",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "health-accounts",
+      "title": "Expenditure on healthcare: UK Health Accounts",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "house-prices-local-authority",
+      "title": "House price statistics for small areas in England and Wales",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "10"
+    },
+    {
+      "id": "index-private-housing-rental-prices",
+      "title": "Index of Private Housing Rental Prices",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "41"
+    },
+    {
+      "id": "labour-market",
+      "title": "UK Labour Market",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "life-expectancy-by-local-authority",
+      "title": "Life Expectancy by Local Authority",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "mid-year-pop-est",
+      "title": "Population Estimates for UK, England and Wales, Scotland and Northern Ireland",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "older-people-economic-activity",
+      "title": "Local authority ageing statistics, older people economic activity",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "older-people-net-internal-migration",
+      "title": "Local authority ageing statistics, net internal migration people aged 65 and over and 85 and over",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "older-people-sex-ratios",
+      "title": "Local authority ageing statistics, sex ratios for people aged 65 and over and 85 and over",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "online-job-advert-estimates",
+      "title": "Faster Indicators - Online Job Advert Estimates",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "175"
+    },
+    {
+      "id": "output-in-the-construction-industry",
+      "title": "Output in the construction industry",
+      "type": "filterable",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "54"
+    },
+    {
+      "id": "projections-older-people-in-single-households",
+      "title": "Local authority ageing statistics, household projections for older people",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "projections-older-people-sex-ratios",
+      "title": "Local authority ageing statistics, projected sex ratios for older people",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "regional-gdp-by-quarter",
+      "title": "Quarterly GDP for England, Wales and the English regions",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "6"
+    },
+    {
+      "id": "regional-gdp-by-year",
+      "title": "Annual GDP for England, Wales and the English regions",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "6"
+    },
+    {
+      "id": "retail-sales-index",
+      "title": "Retail sales index",
+      "type": "filterable",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "45"
+    },
+    {
+      "id": "retail-sales-index-all-businesses",
+      "title": "Retail sales index - all businesses",
+      "type": "filterable",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "45"
+    },
+    {
+      "id": "retail-sales-index-large-and-small-businesses",
+      "title": "Retail sales index - large and small businesses",
+      "type": "filterable",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "45"
+    },
+    {
+      "id": "RM001",
+      "title": "Accommodation type by car or van availability by number of usual residents aged 17 years or over in household",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM002",
+      "title": "Accommodation type by household size",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM003",
+      "title": "Accommodation type by type of central heating in household by tenure",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM006",
+      "title": "Age of youngest dependent child by household type",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM008",
+      "title": "Car or van availability by household composition",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM009",
+      "title": "Concealed family status by family type by dependent children by age of Family Reference Person",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM010",
+      "title": "Country of birth by ethnic group",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM011",
+      "title": "Country of birth by age",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM012",
+      "title": "Dependent children by ethnic group of Household Reference Person by age",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "RM014",
+      "title": "Distance travelled to work by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM015",
+      "title": "Distance travelled to work by car or van availability",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM016",
+      "title": "Distance travelled to work by occupation",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM017",
+      "title": "Economic activity status by country of birth",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM018",
+      "title": "Economic activity status by ethnic group",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM019",
+      "title": "Economic activity status by hours worked by disability",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "RM020",
+      "title": "Economic activity status by living arrangements",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "RM021",
+      "title": "Economic activity status by passports held",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM022",
+      "title": "Economic activity status by provision of unpaid care by general health",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM023",
+      "title": "Economic activity status by religion",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM024",
+      "title": "Economic activity status by sex by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM025",
+      "title": "Economic activity status by sex by employment history",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM026",
+      "title": "Ethnic group by accommodation type",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM027",
+      "title": "Ethnic group by age of arrival in the UK",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM028",
+      "title": "Ethnic group by occupancy rating (bedrooms)",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM029",
+      "title": "Ethnic group by occupancy rating (rooms)",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM030",
+      "title": "Ethnic group by provision of unpaid care by general health",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM031",
+      "title": "Ethnic group by religion",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM032",
+      "title": "Ethnic group by sex by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM033",
+      "title": "Ethnic group of dependent child by sex",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM034",
+      "title": "Family status by number of parents working by economic activity status",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "RM035",
+      "title": "Gender identity by age",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM036",
+      "title": "Gender identity by disability",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM037",
+      "title": "Gender identity by economic activity status",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "5"
+    },
+    {
+      "id": "RM038",
+      "title": "Gender identity by ethnic group",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM039",
+      "title": "Gender identity by general health",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM040",
+      "title": "Gender identity by legal partnership status",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM041",
+      "title": "Gender identity by occupation",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "5"
+    },
+    {
+      "id": "RM042",
+      "title": "General health by car or van availability by sex",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM043",
+      "title": "General health by ethnic group by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM044",
+      "title": "General health by NS-SEC",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM045",
+      "title": "General health by religion by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM046",
+      "title": "General health by tenure by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM047",
+      "title": "Highest level of qualification by country of birth",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM048",
+      "title": "Highest level of qualification by economic activity status",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM049",
+      "title": "Highest level of qualification by ethnic group",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM051",
+      "title": "Highest level of qualification by household composition",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM052",
+      "title": "Highest level of qualification by disability",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM053",
+      "title": "Highest level of qualification by main language",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM054",
+      "title": "Highest level of qualification by religion",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM055",
+      "title": "Highest level of qualification by sex",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM056",
+      "title": "Hours worked by sex by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM057",
+      "title": "Household composition by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM058",
+      "title": "Household composition by ethnic group of Household Reference Person",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM059",
+      "title": "Household composition by number of bedrooms",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM060",
+      "title": "Household composition by number of people in household with a disability",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM061",
+      "title": "Household composition by religion of Household Reference Person",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM062",
+      "title": "Industry by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM063",
+      "title": "Industry by economic activity status",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM064",
+      "title": "Industry by ethnic group",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM065",
+      "title": "Industry by sex",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM066",
+      "title": "Living arrangements by age - Household Reference Person",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM067",
+      "title": "Living arrangements by sex by age",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM068",
+      "title": "Disability by car or van availability",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM069",
+      "title": "Disability by general health by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM070",
+      "title": "Disability by NS-SEC by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM071",
+      "title": "Disability by provision of unpaid care by sex",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM072",
+      "title": "Disability by religion by sex",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM073",
+      "title": "Disability by sex by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM074",
+      "title": "Legal partnership status by sex by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM075",
+      "title": "Method used to travel to work by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM076",
+      "title": "Method used to travel to work by car or van availability",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM077",
+      "title": "Method used to travel to work by distance travelled to work",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM078",
+      "title": "Method used to travel to work by industry",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM079",
+      "title": "Method used to travel to work by occupation",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM080",
+      "title": "Multi-language households by ethnic group of Household Reference Person",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM081",
+      "title": "Multi-language households by occupation of Household Reference Person",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM082",
+      "title": "Multi-language households by tenure",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM083",
+      "title": "Multi-religion households by ethnic group of Household Reference Person",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM084",
+      "title": "Multi-religion households by occupation of Household Reference Person",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM085",
+      "title": "Multi-religion households by tenure",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM086",
+      "title": "National identity by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM087",
+      "title": "National identity by ethnic group",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM088",
+      "title": "National identity by religion",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM089",
+      "title": "National Identity by sex by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM090",
+      "title": "NS-SEC by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM091",
+      "title": "NS-SEC by economic activity status",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM092",
+      "title": "NS-SEC by religion",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM093",
+      "title": "NS-SEC by sex",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM094",
+      "title": "NS-SEC of Household Reference Person by household composition",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM095",
+      "title": "Number of bedrooms by accommodation type by age of dependent children",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM096",
+      "title": "Number of bedrooms by tenure by age of dependent children",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM097",
+      "title": "Occupancy rating (bedrooms) by ethnic group of Household Reference Person",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM098",
+      "title": "Occupancy rating (bedrooms) by household composition",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM099",
+      "title": "Occupancy rating (bedrooms) by tenure",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM100",
+      "title": "Occupancy rating (rooms) by household composition",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM101",
+      "title": "Occupancy rating (rooms) by tenure",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM102",
+      "title": "Occupation by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM103",
+      "title": "Occupation by economic activity status",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM104",
+      "title": "Occupation by ethnic group",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM105",
+      "title": "Occupation by hours worked",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM106",
+      "title": "Occupation by religion",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM107",
+      "title": "Occupation by sex",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM108",
+      "title": "Passports held by country of birth",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM109",
+      "title": "Passports held by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM110",
+      "title": "Passports held by year of arrival in the UK",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM111",
+      "title": "Proficiency in English by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM112",
+      "title": "Proficiency in English by economic activity status",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM113",
+      "title": "Provision of unpaid care by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM114",
+      "title": "Provision of unpaid care by general health by households with people who have a disability",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM115",
+      "title": "Provision of unpaid care by general health by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM116",
+      "title": "Provision of unpaid care by households with people with a disability by economic activity status",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM117",
+      "title": "Religion by accommodation type",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM118",
+      "title": "Religion by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM119",
+      "title": "Residence type by age",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM120",
+      "title": "Residence type by sex by age",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM121",
+      "title": "Sex by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM122",
+      "title": "Sexual orientation by age and sex",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM123",
+      "title": "Sexual orientation by disability",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM124",
+      "title": "Sexual orientation by economic activity status",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM125",
+      "title": "Sexual orientation by ethnic group",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM126",
+      "title": "Sexual orientation by general health",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM127",
+      "title": "Sexual orientation by legal partnership status",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM128",
+      "title": "Sexual orientation by occupation",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM129",
+      "title": "Student accommodation by age",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM130",
+      "title": "Tenure by car or van availability by ethnic group of Household Reference Person",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM131",
+      "title": "Tenure by car or van availability by number of usual residents aged 17 or over in household",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM132",
+      "title": "Tenure by dependent children in household",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM133",
+      "title": "Tenure by economic activity status - Household Reference Persons",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM134",
+      "title": "Tenure by ethnic group - Household Reference Persons",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM135",
+      "title": "Tenure by household composition",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM136",
+      "title": "Tenure by household size by number of bedrooms",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM137",
+      "title": "Tenure by number of rooms",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM138",
+      "title": "Tenure by NS-SEC - Household Reference Persons",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM139",
+      "title": "Tenure by number of people per room in household by accommodation type",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM140",
+      "title": "Tenure by occupation - Household Reference Persons",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM141",
+      "title": "Type of central heating in household by occupancy rating (rooms) by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM142",
+      "title": "Veteran households by tenure",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "RM143",
+      "title": "Veterans by disability",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "RM144",
+      "title": "Veterans by economic activity status",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "RM145",
+      "title": "Veterans by general health",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "RM146",
+      "title": "Veterans by occupation",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM147",
+      "title": "Veterans by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "RM148",
+      "title": "Year last worked by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM149",
+      "title": "Ability to speak Welsh by industry",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM150",
+      "title": "Ability to speak Welsh by national identity by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM151",
+      "title": "Ability to speak Welsh by NS-SEC",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM152",
+      "title": "Ability to speak Welsh by occupation",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM153",
+      "title": "Ability to speak Welsh by tenure - Household Reference Persons",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM154",
+      "title": "Ability to speak Welsh by employment history",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM155",
+      "title": "Family type by parents' ability to speak Welsh by age and ability to speak Welsh of dependent child",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM156",
+      "title": "General health by ability to speak Welsh by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM157",
+      "title": "Disability by ability to speak Welsh by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM158",
+      "title": "Number of people who can speak Welsh by household size",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM160",
+      "title": "Welsh language skills by country of birth",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM161",
+      "title": "Welsh language skills by sex by age",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM162",
+      "title": "Welsh language skills by tenure - Household Reference Persons",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM163",
+      "title": "Gender identity by age by sex",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM164",
+      "title": "Gender identity by type of central heating in household",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM165",
+      "title": "Gender identity by dwelling type",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM166",
+      "title": "Gender identity by household composition",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "5"
+    },
+    {
+      "id": "RM167",
+      "title": "Gender identity by highest qualification held",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM168",
+      "title": "Gender identity by hours worked",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "5"
+    },
+    {
+      "id": "RM169",
+      "title": "Gender identity by industry",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "6"
+    },
+    {
+      "id": "RM170",
+      "title": "Gender identity by NS-SEC",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "5"
+    },
+    {
+      "id": "RM171",
+      "title": "Gender identity by occupancy rating (bedrooms)",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM172",
+      "title": "Gender identity by occupancy rating (rooms)",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM173",
+      "title": "Gender identity by religion",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM174",
+      "title": "Gender identity by sex",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM175",
+      "title": "Gender identity by sexual orientation",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "5"
+    },
+    {
+      "id": "RM176",
+      "title": "Gender identity by tenure",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM177",
+      "title": "Sexual orientation by age",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM178",
+      "title": "Sexual orientation by unpaid carer status",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM179",
+      "title": "Sexual orientation by type of central heating in household",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM180",
+      "title": "Sexual orientation by dwelling type",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM181",
+      "title": "Sexual orientation by household composition",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM182",
+      "title": "Sexual orientation by highest qualification held",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM183",
+      "title": "Sexual orientation by hours worked",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM184",
+      "title": "Sexual orientation by industry",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "7"
+    },
+    {
+      "id": "RM185",
+      "title": "Sexual orientation by NS-SEC",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM186",
+      "title": "Sexual orientation by occupancy rating (bedrooms)",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM187",
+      "title": "Sexual orientation by occupancy rating (rooms)",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM188",
+      "title": "Sexual orientation by religion",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM189",
+      "title": "Sexual orientation by sex",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM190",
+      "title": "Sexual orientation by tenure",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "RM191",
+      "title": "Gender identity by unpaid carer status",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "RM192",
+      "title": "Number of dwellings that are houses in multiple occupation (HMO)",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "RM193",
+      "title": "Number of households in houses in multiple occupation (HMO) by accommodation type",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "RM194",
+      "title": "Number of households in houses in multiple occupation (HMO) by type of central heating in household",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "RM195",
+      "title": "Number of households in houses in multiple occupation (HMO) by type of occupancy rating (bedrooms)",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "RM196",
+      "title": "Communal establishment management and type- communal establishments",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM197",
+      "title": "Number of multi-generational households by household tenure",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "RM198",
+      "title": "Number of multi-generational households by bedroom occupancy ratings",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "RM200",
+      "title": "Sex by single year of age (detailed)",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM201",
+      "title": "Tenure by age - Household Reference Persons",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM202",
+      "title": "Household size by number of rooms",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM203",
+      "title": "Legal partnership status by sex by age - Communal establishment residents",
+      "type": "cantabular_multivariate_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM204",
+      "title": "Number of Dwellings",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "RM205",
+      "title": "Dwelling type",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "sexual-orientation-by-age-and-sex",
+      "title": "Sexual orientation by age and sex",
+      "type": "filterable",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "sexual-orientation-by-region",
+      "title": "Sexual orientation by English regions and UK countries",
+      "type": "filterable",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "ST001",
+      "title": "Number of non-UK born short-term residents by residence type",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "ST002",
+      "title": "Number of non-UK born short-term residents by sex by age",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "ST003",
+      "title": "Number of non-UK born short-term residents by ethnicity",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "ST004",
+      "title": "Number of non-UK born short-term residents by country of birth",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "ST005",
+      "title": "Number of non-UK born short-term residents by main language",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "ST006",
+      "title": "Number of non-UK born short-term residents by passports held (detailed)",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "ST007",
+      "title": "Number of non-UK born short-term residents by general health",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "ST008",
+      "title": "Number of non-UK born short-term residents in household spaces by tenure",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "ST009",
+      "title": "Number of non-UK born short-term residents by economic activity",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "ST010",
+      "title": "Number of non-UK born short-term residents by industry",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "ST011",
+      "title": "Number of non-UK born short-term residents by occupation",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "ST012",
+      "title": "Number of non-UK born short-term residents by NS-SEC",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "ST013",
+      "title": "Number of non-UK born short-term residents by sex by single year of age",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "suicides-in-the-uk",
+      "title": "Suicide registrations in England and Wales by local authority",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "tax-benefits-statistics",
+      "title": "Effects of Taxes and Benefits on Household Income",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "trade",
+      "title": "Trade in goods: country by commodity",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "65"
+    },
+    {
+      "id": "traffic-camera-activity",
+      "title": "Traffic Camera Activity",
+      "type": "filterable",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "105"
+    },
+    {
+      "id": "TS001",
+      "title": "Number of usual residents in households and communal establishments",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS002",
+      "title": "Legal partnership status",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS003",
+      "title": "Household composition",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "TS004",
+      "title": "Country of birth",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS005",
+      "title": "Passports held",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS006",
+      "title": "Population density",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "TS007",
+      "title": "Age by single year",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS008",
+      "title": "Sex",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "TS009",
+      "title": "Sex by single year of age",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "TS010",
+      "title": "Living arrangements",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "5"
+    },
+    {
+      "id": "TS011",
+      "title": "Households by deprivation dimensions",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "6"
+    },
+    {
+      "id": "TS012",
+      "title": "Country of birth (detailed)",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "TS013",
+      "title": "Passports held (detailed)",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS015",
+      "title": "Year of arrival in UK",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS016",
+      "title": "Length of residence",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS017",
+      "title": "Household size",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS018",
+      "title": "Age of arrival in the UK",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS019",
+      "title": "Migrant Indicator",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS020",
+      "title": "Number of non-UK short-term residents by sex",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS021",
+      "title": "Ethnic group",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS022",
+      "title": "Ethnic group (detailed)",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "TS023",
+      "title": "Multiple ethnic group",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS024",
+      "title": "Main language (detailed)",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS025",
+      "title": "Household language",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS026",
+      "title": "Multiple main languages in household",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS027",
+      "title": "National identity - UK",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "TS028",
+      "title": "National identity (detailed)",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "TS029",
+      "title": "Proficiency in English",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS030",
+      "title": "Religion",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS031",
+      "title": "Religion (detailed)",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "TS032",
+      "title": "Welsh language skills (detailed)",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS033",
+      "title": "Welsh language skills (speaking)",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS034",
+      "title": "Welsh language skills (writing)",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS035",
+      "title": "Welsh language skills (reading)",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS036",
+      "title": "Welsh language skills (understanding)",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS037",
+      "title": "General health",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS037ASP",
+      "title": "General health, age-standardised proportions",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "TS038",
+      "title": "Disability",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS038ASP",
+      "title": "Disability, age-standardised proportions",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "TS039",
+      "title": "Provision of unpaid care",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS039ASP",
+      "title": "Provision of unpaid care, age-standardised proportions",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "TS040",
+      "title": "Number of disabled people in the household",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS041",
+      "title": "Number of Households",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS044",
+      "title": "Accommodation type",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "TS045",
+      "title": "Car or van availability",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "TS046",
+      "title": "Central heating",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "TS047",
+      "title": "Communal establishment residents by age and sex",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "TS048",
+      "title": "Communal establishment management and type",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "TS050",
+      "title": "Number of bedrooms",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "TS051",
+      "title": "Number of rooms",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "TS052",
+      "title": "Occupancy rating for bedrooms",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "5"
+    },
+    {
+      "id": "TS053",
+      "title": "Occupancy rating for rooms",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "TS054",
+      "title": "Tenure",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "TS055",
+      "title": "Purpose of second address",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "5"
+    },
+    {
+      "id": "TS056",
+      "title": "Second address indicator",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "5"
+    },
+    {
+      "id": "TS058",
+      "title": "Distance travelled to work",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "TS059",
+      "title": "Hours worked",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "5"
+    },
+    {
+      "id": "TS060",
+      "title": "Industry",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "5"
+    },
+    {
+      "id": "TS061",
+      "title": "Method used to travel to work",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "6"
+    },
+    {
+      "id": "TS062",
+      "title": "NS-SEC",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "5"
+    },
+    {
+      "id": "TS063",
+      "title": "Occupation",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "5"
+    },
+    {
+      "id": "TS064",
+      "title": "Occupation - minor groups",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "6"
+    },
+    {
+      "id": "TS065",
+      "title": "Employment history",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "5"
+    },
+    {
+      "id": "TS066",
+      "title": "Economic activity status",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "6"
+    },
+    {
+      "id": "TS067",
+      "title": "Highest level of qualification",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS068",
+      "title": "Schoolchildren and full-time students",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS070",
+      "title": "Gender identity (detailed)",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "TS071",
+      "title": "Previously served in the UK armed forces",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "5"
+    },
+    {
+      "id": "TS072",
+      "title": "Number of people in household who have previously served in UK armed forces",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "5"
+    },
+    {
+      "id": "TS073",
+      "title": "Population who have previously served in UK armed forces in communal establishments and in households",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "3"
+    },
+    {
+      "id": "TS074",
+      "title": "Household Reference Person indicator of previous service in UK armed forces",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "5"
+    },
+    {
+      "id": "TS075",
+      "title": "Multi religion households",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "TS076",
+      "title": "Welsh language skills (speaking) by single year of age",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "2"
+    },
+    {
+      "id": "TS077",
+      "title": "Sexual orientation",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "6"
+    },
+    {
+      "id": "TS078",
+      "title": "Gender identity",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "TS079",
+      "title": "Sexual orientation (detailed)",
+      "type": "cantabular_flexible_table",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "5"
+    },
+    {
+      "id": "uk-business-by-enterprises-and-local-units",
+      "title": "UK Business: Activity, Size and Location",
+      "type": "filterable",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "1"
+    },
+    {
+      "id": "uk-spending-on-cards",
+      "title": "UK spending on credit and debit cards",
+      "type": "filterable",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "130"
+    },
+    {
+      "id": "weekly-deaths-age-sex",
+      "title": "Deaths registered weekly in England and Wales by age and sex",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "20"
+    },
+    {
+      "id": "weekly-deaths-health-board",
+      "title": "Death registrations and occurrences by health board and place of death",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "50"
+    },
+    {
+      "id": "weekly-deaths-local-authority",
+      "title": "Death registrations and occurrences by local authority and place of death",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "50"
+    },
+    {
+      "id": "weekly-deaths-region",
+      "title": "Deaths registered weekly in England and Wales by region",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "121"
+    },
+    {
+      "id": "wellbeing-local-authority",
+      "title": "Personal well-being estimates by local authority",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "4"
+    },
+    {
+      "id": "wellbeing-quarterly",
+      "title": "Quarterly personal well-being estimates",
+      "state": "published",
+      "latestEdition": null,
+      "latestVersion": "9"
+    }
+  ]
+}

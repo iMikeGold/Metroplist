@@ -19,5 +19,13 @@
   ],
   "images": {
     "binding": "IMAGES"
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "metroplist-data",
+      "database_id": "32483de6-fc5b-4d94-9ca1-d3bd73a796d1",
+      "migrations_dir": "database/migrations"
+    }
+  ]
 }

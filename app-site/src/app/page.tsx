@@ -43,7 +43,7 @@ export default function HomePage() {
       <section className="notice">
         <strong>The first verified evidence slice is ready.</strong>
         <p>
-          Explore <Link href="/density/greenwich">Greenwich</Link>, <Link href="/density/bromley">Bromley</Link>, or their <Link href="/compare/greenwich/bromley">density comparison</Link>.
+          Open the <Link href="/map">world registry</Link>, explore <Link href="/density/greenwich">Greenwich</Link>, <Link href="/density/bromley">Bromley</Link>, or their <Link href="/compare/greenwich/bromley">density comparison</Link>.
         </p>
       </section>
     </main>

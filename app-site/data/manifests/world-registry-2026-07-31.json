@@ -1,0 +1,32 @@
+{
+  "counts": {
+    "m49CountriesOrAreas": 248,
+    "m49Places": 278,
+    "m49Rows": 248,
+    "worldBankRecords": 295,
+    "wppEstimateRows": 17538,
+    "wppLocations": 237,
+    "wppOnlyLocations": 2
+  },
+  "generatedAt": "2026-07-31",
+  "generatedSqlSha256": "8a9630fee3506051a6b8f32afa1df7b9ffd4f400bfad7d923082774a33b7ea8e",
+  "rawAssetsCommitted": false,
+  "sources": {
+    "m49": {
+      "sha256": "748f6ff7380c8a50ea9448f068b79e3a1ee31be63207249e8cc89bf1eb969d11",
+      "url": "https://unstats.un.org/unsd/methodology/m49/overview/"
+    },
+    "world_bank": {
+      "sha256": "d29d57f8adf954c5e2a1520a02fb2c7b45575d8db3bd327a9dff47d66914231c",
+      "url": "https://api.worldbank.org/v2/country?format=json&per_page=400"
+    },
+    "wpp": {
+      "sha256": "286ac36bb1415e2e1ade03acfef0a29f0e4c087e2f78e38c48f50c5df89082bc",
+      "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz"
+    }
+  },
+  "wppYearRange": [
+    1950,
+    2023
+  ]
+}

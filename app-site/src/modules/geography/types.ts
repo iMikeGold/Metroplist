@@ -26,7 +26,7 @@ export interface Place {
   placeKind: PlaceKind;
   countryCode: string | null;
   parentPlaceId: string | null;
-  status: "current" | "historical" | "proposed" | "disputed";
+  status: "current" | "historical" | "proposed" | "disputed" | "unresolved";
   validFrom: string | null;
   validTo: string | null;
 }

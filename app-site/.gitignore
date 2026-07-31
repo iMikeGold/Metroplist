@@ -3,7 +3,7 @@ node_modules/
 .open-next/
 out/
 dist/
-coverage/
+/coverage/
 .wrangler/
 .dev.vars
 .env
@@ -11,4 +11,8 @@ coverage/
 !.env.example
 *.tsbuildinfo
 .DS_Store
+data/exports/*.sql
+data/raw/*
+!data/raw/.gitkeep
+database/generated/*.sql
 .dev.vars.*

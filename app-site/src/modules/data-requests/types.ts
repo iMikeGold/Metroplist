@@ -1,12 +1,16 @@
 export const DATA_REQUEST_STATUSES = [
   "requested",
-  "place_resolution_required",
-  "source_identified",
-  "acquisition_pending",
-  "under_review",
+  "place_resolved",
+  "source_discovery",
+  "source_found",
+  "queued",
+  "acquired",
+  "staged",
+  "validation_failed",
+  "awaiting_review",
+  "verified",
   "published",
   "unavailable",
-  "methodologically_incompatible",
 ] as const;
 
 export type DataRequestStatus = (typeof DATA_REQUEST_STATUSES)[number];

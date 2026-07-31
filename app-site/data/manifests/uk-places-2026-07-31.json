@@ -1,0 +1,22 @@
+{
+  "counts": {
+    "builtUpAreas": 7723,
+    "localAuthorityDistricts": 374
+  },
+  "generatedAt": "2026-07-31",
+  "generatedSqlSha256": "9db8596ed79b9fdd1e75f61c37e7a7ec8c890f7ad0be9c47de516279f03b09a7",
+  "rawAssetsCommitted": false,
+  "sources": {
+    "builtUpAreas": {
+      "censusBasis": "2021",
+      "referenceDate": "2022-12-01",
+      "sha256": "e67ea26a33e392f1f40c0fba17a88c36efd8a02a8b563c538043f86ed662db22",
+      "url": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/BUA_DEC_2022_EW_NC/FeatureServer/0/query"
+    },
+    "localAuthorityDistricts": {
+      "referenceDate": "2021-12-31",
+      "sha256": "5b97944aa3803cced9733698f2cfc8e12fc91e39314e5d13e8b12181fc7f5628",
+      "url": "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Local_Authority_Districts_December_2021_UK_BUC_2022/FeatureServer/0/query"
+    }
+  }
+}
