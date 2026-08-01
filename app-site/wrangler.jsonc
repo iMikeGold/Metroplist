@@ -23,9 +23,19 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "metroplist-data-v2",
-      "database_id": "443d7d74-a820-4f5d-a4f4-493bb88b5cfa",
+      "database_name": "metroplist-data-v3",
+      "database_id": "831a0c7a-62c3-46b7-986d-3a9eb5428aa4",
       "migrations_dir": "database/migrations"
+    },
+    {
+      "binding": "CITY_HISTORY_ESTIMATES",
+      "database_name": "metroplist-city-history-estimates",
+      "database_id": "49ec20c2-8e0e-4fe3-8c3a-35ba3dd8bed0"
+    },
+    {
+      "binding": "CITY_HISTORY_PROJECTIONS",
+      "database_name": "metroplist-city-history-projections",
+      "database_id": "3f2c5236-e089-4bc4-9a83-73bb0d9d1d8d"
     }
   ]
 }
