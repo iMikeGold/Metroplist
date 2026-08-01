@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ShareExportPanel } from "@/components/share-export-panel";
+import { indicatorPresentation } from "@/modules/indicators/publication";
 import { getRuntimeRepositories } from "@/server/database";
 import {
   compareSelectedEvidence,
@@ -81,6 +83,11 @@ export default async function ComparePage({
       return <UnavailableComparison message={reason} />;
     }
     const { originPlace, targetPlace, origin, target, directional } = result;
+    const reportParameters = new URLSearchParams({
+      page: `https://app.metroplist.com/compare/${originPlace.slug}/${targetPlace.slug}`,
+      place_ids: `${originPlace.id},${targetPlace.id}`,
+      observation_ids: `${origin.observationId},${target.observationId}`,
+    });
     return (
       <main>
         <p className="eyebrow">
@@ -139,7 +146,26 @@ export default async function ComparePage({
           >
             Reverse comparison
           </Link>
+          <Link href={`/report-data-issue?${reportParameters}`}>
+            Report a data issue
+          </Link>
         </nav>
+        <ShareExportPanel
+          snapshotType="comparison"
+          placeIds={[originPlace.id, targetPlace.id]}
+          evidence={[
+            {
+              observationId: origin.observationId,
+              label: `${originPlace.canonicalName} · ${indicatorPresentation(origin.indicatorCode, origin.indicatorName).publicLabel}`,
+              detail: `${origin.referenceYear ?? "Date unavailable"} · ${origin.observationStatus}`,
+            },
+            {
+              observationId: target.observationId,
+              label: `${targetPlace.canonicalName} · ${indicatorPresentation(target.indicatorCode, target.indicatorName).publicLabel}`,
+              detail: `${target.referenceYear ?? "Date unavailable"} · ${target.observationStatus}`,
+            },
+          ]}
+        />
       </main>
     );
   }

@@ -2,10 +2,10 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 
 const links = [
-  ["Explore", "#explore"],
-  ["System", "#system"],
-  ["Stories", "#stories"],
-  ["Method", "#method"],
+  ["Explore", "/#explore"],
+  ["System", "/#system"],
+  ["Stories", "/#stories"],
+  ["Data & Trust", "/data-and-trust/"],
   ["Explore the Atlas", "https://app.metroplist.com"]
 ];
 

@@ -51,6 +51,7 @@ export interface PlaceIndicatorSummary {
 
 export interface PlaceIndicatorEvidence {
   observationId: string;
+  indicatorId?: string;
   indicatorCode: string;
   indicatorName: string;
   unit: string;
@@ -66,6 +67,7 @@ export interface PlaceIndicatorEvidence {
   sourceReleaseId: string | null;
   geographyId: string;
   geographyType: string;
+  calculationIds?: string[];
 }
 
 export interface CoverageSummary {

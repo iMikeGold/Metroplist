@@ -1,0 +1,4 @@
+/methodology/ https://app.metroplist.com/methodology 301
+/coverage/ https://app.metroplist.com/coverage 301
+/data-sources/ https://app.metroplist.com/data-sources 301
+/snapshot/* https://app.metroplist.com/snapshot/:splat 301

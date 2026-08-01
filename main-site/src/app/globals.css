@@ -83,3 +83,58 @@ body {
     transition-duration: .01ms !important;
   }
 }
+
+.policy-page {
+  min-height: 70vh;
+  padding: 8.5rem 1.25rem 5rem;
+}
+
+.policy-intro,
+.policy-sections {
+  margin-inline: auto;
+  max-width: 56rem;
+}
+
+.policy-intro h1 {
+  margin-top: 0.75rem;
+  font-size: clamp(2.5rem, 7vw, 4.75rem);
+  font-weight: 600;
+  line-height: 1.02;
+}
+
+.policy-intro > p:last-child {
+  margin-top: 1.5rem;
+  max-width: 46rem;
+  color: var(--color-slate);
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+.policy-sections {
+  display: grid;
+  gap: 3rem;
+  margin-top: 4rem;
+}
+
+.policy-sections section {
+  border-top: 1px solid color-mix(in srgb, var(--color-graphite) 14%, transparent);
+  padding-top: 1.5rem;
+}
+
+.policy-sections h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.policy-sections p,
+.policy-sections li {
+  margin-top: 1rem;
+  color: var(--color-slate);
+  line-height: 1.75;
+}
+
+.policy-sections a {
+  color: var(--color-deep-ocean);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}

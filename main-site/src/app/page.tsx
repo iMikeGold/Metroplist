@@ -13,9 +13,6 @@ import {
   Sparkles,
   Telescope
 } from "lucide-react";
-import MobileNavigation from "./mobile-navigation";
-
-const LOGO = "/assets/brand/logos/metroplist-dv4-grey-teal.svg";
 
 const imageSet = {
   hero: "/assets/images/web/connected-world-map.webp",
@@ -64,28 +61,6 @@ const method = ["Observe", "Collect", "Connect", "Visualise", "Explain"];
 export default function Home() {
   return (
     <main className="min-h-screen bg-soft-white text-graphite">
-      <header className="fixed inset-x-0 top-0 z-50 border-b border-graphite/10 bg-soft-white/88 backdrop-blur-xl">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-8">
-          <a href="#" className="flex items-center gap-3" aria-label="Metroplist home">
-            <Image src={LOGO} alt="" width={34} height={34} className="h-8 w-8" priority />
-            <span className="text-lg font-medium tracking-[0.06em]">Metroplist</span>
-          </a>
-          <div className="hidden items-center gap-7 text-sm text-slate md:flex">
-            <a href="#explore" className="hover:text-graphite">Explore</a>
-            <a href="#system" className="hover:text-graphite">System</a>
-            <a href="#stories" className="hover:text-graphite">Stories</a>
-            <a href="#method" className="hover:text-graphite">Method</a>
-            <a
-              href="https://app.metroplist.com"
-              className="inline-flex min-h-10 items-center gap-2 rounded-md bg-graphite px-4 font-semibold text-soft-white transition hover:bg-deep-ocean"
-            >
-              Explore the Atlas <ArrowUpRight size={16} />
-            </a>
-          </div>
-          <MobileNavigation />
-        </nav>
-      </header>
-
       <section className="relative isolate flex min-h-screen items-end overflow-hidden pt-24">
         <Image
           src={imageSet.hero}
@@ -266,15 +241,6 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="border-t border-graphite/10 px-5 py-9 md:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-4 text-sm text-slate md:flex-row md:items-center">
-          <div className="flex items-center gap-3">
-            <Image src={LOGO} alt="" width={28} height={28} className="h-7 w-7" />
-            <span className="font-medium tracking-[0.06em] text-graphite">Metroplist</span>
-          </div>
-          <p>The World, Connected.</p>
-        </div>
-      </footer>
     </main>
   );
 }
