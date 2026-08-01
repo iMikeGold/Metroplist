@@ -254,6 +254,9 @@ export function AtlasExplorer({
               <Link href={`/compare?origin=${encodeURIComponent(selected.slug)}`}>
                 Compare this place
               </Link>
+              <Link href={`/place/${selected.slug}?publish=1`}>
+                Share or export
+              </Link>
             </nav>
           </section>
         ) : null}

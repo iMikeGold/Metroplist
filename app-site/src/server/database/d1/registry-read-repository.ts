@@ -239,12 +239,16 @@ export class D1RegistryReadRepository implements RegistryReadRepository {
   async listPlaceIndicatorEvidence(placeId: string): Promise<PlaceIndicatorEvidence[]> {
     const result = await this.db
       .prepare(`
-        SELECT o.id AS observation_id, i.code AS indicator_code,
+        SELECT o.id AS observation_id, i.id AS indicator_id, i.code AS indicator_code,
           i.canonical_name AS indicator_name, COALESCE(u.symbol, u.canonical_name) AS symbol,
           o.value_numeric, o.reference_year, o.reference_period_start,
           o.reference_period_end, o.methodology_version, o.quality_status,
           o.preferred_status, o.is_estimate, o.evidence_status, o.dataset_release_id,
-          g.id AS geography_id, g.geography_type
+          g.id AS geography_id, g.geography_type,
+          (SELECT GROUP_CONCAT(DISTINCT lineage.calculation_id)
+            FROM observation_lineage lineage
+            WHERE lineage.output_observation_id = o.id
+              AND lineage.calculation_id IS NOT NULL) AS calculation_ids
         FROM observations o
         JOIN geographies g ON g.id = o.geography_id
         JOIN indicators i ON i.id = o.indicator_id
@@ -258,6 +262,7 @@ export class D1RegistryReadRepository implements RegistryReadRepository {
       .all<Row>();
     return (result.results ?? []).map((row) => ({
       observationId: String(row.observation_id),
+      indicatorId: String(row.indicator_id),
       indicatorCode: String(row.indicator_code),
       indicatorName: String(row.indicator_name),
       unit: String(row.symbol),
@@ -281,6 +286,7 @@ export class D1RegistryReadRepository implements RegistryReadRepository {
         row.dataset_release_id == null ? null : String(row.dataset_release_id),
       geographyId: String(row.geography_id),
       geographyType: String(row.geography_type),
+      calculationIds: splitList(row.calculation_ids),
     }));
   }
 

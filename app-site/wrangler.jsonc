@@ -36,6 +36,11 @@
       "binding": "CITY_HISTORY_PROJECTIONS",
       "database_name": "metroplist-city-history-projections",
       "database_id": "3f2c5236-e089-4bc4-9a83-73bb0d9d1d8d"
+    },
+    {
+      "binding": "PUBLICATIONS_DB",
+      "database_name": "metroplist-publications",
+      "database_id": "8cad5b1c-148c-4da4-a19f-40489f826301"
     }
   ]
 }

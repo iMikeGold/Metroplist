@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { InstitutionalFooter } from "@/components/institutional-footer";
+import { InstitutionalHeader } from "@/components/institutional-header";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -43,7 +45,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <InstitutionalHeader />
+        {children}
+        <InstitutionalFooter />
+      </body>
     </html>
   );
 }
