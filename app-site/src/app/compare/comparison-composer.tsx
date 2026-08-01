@@ -18,6 +18,14 @@ interface Candidate {
   geographyTypes: string[];
 }
 
+function updateComparisonUrl(origin: Candidate | null, target: Candidate | null) {
+  const parameters = new URLSearchParams();
+  if (origin) parameters.set("origin", origin.slug);
+  if (origin && target) parameters.set("target", target.slug);
+  const query = parameters.toString();
+  window.history.replaceState(null, "", query ? `/compare?${query}` : "/compare");
+}
+
 function PlacePicker({
   label,
   query,
@@ -79,11 +87,17 @@ function PlacePicker({
   );
 }
 
-export function ComparisonComposer() {
-  const [origin, setOrigin] = useState<Candidate | null>(null);
-  const [target, setTarget] = useState<Candidate | null>(null);
-  const [originQuery, setOriginQuery] = useState("");
-  const [targetQuery, setTargetQuery] = useState("");
+export function ComparisonComposer({
+  initialOrigin = null,
+  initialTarget = null,
+}: {
+  initialOrigin?: Candidate | null;
+  initialTarget?: Candidate | null;
+}) {
+  const [origin, setOrigin] = useState<Candidate | null>(initialOrigin);
+  const [target, setTarget] = useState<Candidate | null>(initialTarget);
+  const [originQuery, setOriginQuery] = useState(initialOrigin?.canonicalName ?? "");
+  const [targetQuery, setTargetQuery] = useState(initialTarget?.canonicalName ?? "");
   const [originEvidence, setOriginEvidence] = useState<ComparableEvidence[]>([]);
   const [targetEvidence, setTargetEvidence] = useState<ComparableEvidence[]>([]);
   const [selectedObservationIds, setSelectedObservationIds] = useState("");
@@ -137,6 +151,7 @@ export function ComparisonComposer() {
           setOrigin(candidate);
           setOriginEvidence([]);
           setSelectedObservationIds("");
+          updateComparisonUrl(candidate, target);
         }}
       />
       <PlacePicker
@@ -147,6 +162,7 @@ export function ComparisonComposer() {
           setTarget(candidate);
           setTargetEvidence([]);
           setSelectedObservationIds("");
+          updateComparisonUrl(origin, candidate);
         }}
       />
       <section className="comparison-selection" aria-live="polite">
@@ -194,6 +210,7 @@ export function ComparisonComposer() {
               setOriginEvidence(targetEvidence);
               setTargetEvidence(originEvidence);
               setSelectedObservationIds("");
+              updateComparisonUrl(target, origin);
             }}
           >
             Swap places

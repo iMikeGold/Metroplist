@@ -43,7 +43,7 @@ export default async function PlacePage({ params }: { params: Promise<Params> })
       </section>
       <nav className="record-actions">
         <Link href={`/map?q=${encodeURIComponent(detail.canonicalName)}&place=${encodeURIComponent(detail.slug)}`}>View in Explore</Link>
-        <Link href="/compare">Compare this place</Link>
+        <Link href={`/compare?origin=${encodeURIComponent(detail.slug)}`}>Compare this place</Link>
       </nav>
       <details className="provenance">
         <summary>Sources and methodology</summary>
