@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { buildSnapshotManifest } from "@/server/services";
+import {
+  buildPublicationReferences,
+  buildSnapshotManifest,
+} from "@/server/services";
 import type {
   PlaceDetail,
   PlaceIndicatorEvidence,
@@ -120,6 +123,43 @@ describe("server-built Snapshots", () => {
       "place-other",
     ]);
     expect(new Set(manifest.places.map((item) => item.slug)).size).toBe(2);
+  });
+
+  it("retains both selected observations while storing shared references once", async () => {
+    const manifest = await buildSnapshotManifest(
+      {
+        snapshotType: "comparison",
+        placeIds: [origin.id, target.id],
+        observationIds: ["obs-origin", "obs-target"],
+        contentMode: "full_comparison",
+        preferredVariant: "landscape",
+      },
+      repository,
+      "2026-08-01T12:00:00.000Z",
+    );
+    const references = buildPublicationReferences(manifest);
+    expect(
+      references.filter((reference) => reference.referenceType === "place"),
+    ).toHaveLength(2);
+    expect(
+      references.filter((reference) => reference.referenceType === "observation"),
+    ).toHaveLength(2);
+    expect(
+      references.filter((reference) => reference.referenceType === "indicator"),
+    ).toEqual([
+      expect.objectContaining({
+        referenceId: "ind_population_total",
+        referenceRole: "published_indicator",
+      }),
+    ]);
+    expect(
+      references.filter((reference) => reference.referenceType === "source_release"),
+    ).toEqual([
+      expect.objectContaining({ referenceId: "rel_wup_2025" }),
+    ]);
+    expect(references.map((reference) => reference.ordinal)).toEqual(
+      references.map((_, index) => index),
+    );
   });
 
   it("rejects unknown ownership and incompatible evidence", async () => {

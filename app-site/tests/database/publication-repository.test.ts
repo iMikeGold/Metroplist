@@ -132,4 +132,26 @@ describe("D1 publication repository", () => {
     expect(result.snapshot.id).toBe("snapshot-a");
     expect(db.statements.every((statement) => !statement.sql.includes("INSERT INTO"))).toBe(true);
   });
+
+  it("rejects malformed duplicate references before starting a publication batch", async () => {
+    const db = new Db(null);
+    const repository = new D1PublicationRepository(db);
+    const duplicateReference = {
+      referenceType: "indicator" as const,
+      referenceId: "ind-a",
+      referenceRole: "published_indicator",
+      ordinal: 0,
+    };
+    await expect(
+      repository.create({
+        id: "new",
+        publicSlug: "NEW",
+        manifest,
+        contentHash: "sha256:new",
+        canonicalUrl: "https://app.metroplist.com/snapshot/NEW",
+        references: [duplicateReference, { ...duplicateReference, ordinal: 1 }],
+      }),
+    ).rejects.toThrow("Snapshot references must be unique");
+    expect(db.statements).toHaveLength(0);
+  });
 });

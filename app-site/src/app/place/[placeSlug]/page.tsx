@@ -70,7 +70,12 @@ export default async function PlacePage({
       </section>
       <nav className="record-actions">
         <Link href={`/map?q=${encodeURIComponent(detail.canonicalName)}&place=${encodeURIComponent(detail.slug)}`}>View in Explore</Link>
-        <Link href={`/compare?origin=${encodeURIComponent(detail.slug)}`}>Compare this place</Link>
+        <Link
+          href={`/compare?origin=${encodeURIComponent(detail.slug)}`}
+          prefetch={false}
+        >
+          Compare this place
+        </Link>
         <Link href={`/report-data-issue?${reportParameters}`}>Report a data issue</Link>
       </nav>
       {latestEvidence.length ? (

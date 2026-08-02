@@ -251,7 +251,10 @@ export function AtlasExplorer({
             </dl>
             <nav className="record-actions">
               <Link href={`/place/${selected.slug}`}>View full place record</Link>
-              <Link href={`/compare?origin=${encodeURIComponent(selected.slug)}`}>
+              <Link
+                href={`/compare?origin=${encodeURIComponent(selected.slug)}`}
+                prefetch={false}
+              >
                 Compare this place
               </Link>
               <Link href={`/place/${selected.slug}?publish=1`}>

@@ -51,4 +51,11 @@ describe("publication and trust routes", () => {
     expect(share).toContain("navigator.share");
     expect(share).toContain("Copy link");
   });
+
+  it("keeps publication persistence failures out of public API responses", () => {
+    const route = readFileSync("src/app/api/snapshots/route.ts", "utf8");
+    expect(route).toContain("The Snapshot could not be created. Please try again.");
+    expect(route).toContain("console.error(\"Metroplist Snapshot creation failed\"");
+    expect(route).not.toContain("error instanceof Error\n            ? error.message");
+  });
 });

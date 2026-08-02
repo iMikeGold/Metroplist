@@ -45,7 +45,9 @@ function observationManifest(
   evidence: PlaceIndicatorEvidence,
 ): SnapshotObservation {
   if (evidence.value == null) {
-    throw new Error(`Observation ${evidence.observationId} has no numeric value.`);
+    throw new SnapshotValidationError(
+      `Observation ${evidence.observationId} has no numeric value.`,
+    );
   }
   return {
     observationId: evidence.observationId,
@@ -70,7 +72,34 @@ function unique(values: Array<string | null | undefined>): string[] {
   return [...new Set(values.filter((value): value is string => Boolean(value)))].sort();
 }
 
-function references(manifest: SnapshotManifest): PublicationReference[] {
+export class SnapshotValidationError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "SnapshotValidationError";
+  }
+}
+
+function uniqueReferences(
+  candidates: PublicationReference[],
+): PublicationReference[] {
+  const seen = new Set<string>();
+  const references: PublicationReference[] = [];
+  for (const candidate of candidates) {
+    const key = [
+      candidate.referenceType,
+      candidate.referenceId,
+      candidate.referenceRole,
+    ].join("\u001f");
+    if (seen.has(key)) continue;
+    seen.add(key);
+    references.push({ ...candidate, ordinal: references.length });
+  }
+  return references;
+}
+
+export function buildPublicationReferences(
+  manifest: SnapshotManifest,
+): PublicationReference[] {
   let ordinal = 0;
   const output: PublicationReference[] = [];
   for (const place of manifest.places) {
@@ -111,7 +140,7 @@ function references(manifest: SnapshotManifest): PublicationReference[] {
       ordinal: ordinal++,
     });
   }
-  return output;
+  return uniqueReferences(output);
 }
 
 async function loadSelection(
@@ -122,7 +151,7 @@ async function loadSelection(
     request.placeIds.map((placeId) => registry.findPlaceDetail(placeId)),
   );
   if (places.some((place) => !place)) {
-    throw new Error("One or more selected places no longer exist.");
+    throw new SnapshotValidationError("One or more selected places no longer exist.");
   }
   const resolvedPlaces = places as PlaceDetail[];
   const histories = await Promise.all(
@@ -138,11 +167,13 @@ async function loadSelection(
       })),
   );
   if (selected.length !== requested.size) {
-    throw new Error("A selected observation does not belong to the selected places.");
+    throw new SnapshotValidationError(
+      "A selected observation does not belong to the selected places.",
+    );
   }
   for (const selection of selected) {
     if (!publishableIndicator(selection.evidence.indicatorCode)) {
-      throw new Error(
+      throw new SnapshotValidationError(
         `${selection.evidence.indicatorName} is not approved for publication.`,
       );
     }
@@ -159,7 +190,9 @@ export async function buildSnapshotManifest(
     (request.snapshotType === "place_profile" && request.placeIds.length !== 1) ||
     (request.snapshotType === "comparison" && request.placeIds.length !== 2)
   ) {
-    throw new Error("Snapshot type and selected place count do not match.");
+    throw new SnapshotValidationError(
+      "Snapshot type and selected place count do not match.",
+    );
   }
   const { places, selected } = await loadSelection(request, registry);
   const observations = selected.map(({ placeId, evidence }) =>
@@ -200,7 +233,7 @@ export async function buildSnapshotManifest(
           candidate.evidenceStatus === origin.evidenceStatus,
       );
       if (!target) {
-        throw new Error(
+        throw new SnapshotValidationError(
           `No compatible target evidence was selected for ${origin.indicatorName}.`,
         );
       }
@@ -223,12 +256,16 @@ export async function buildSnapshotManifest(
         },
       );
       if (compatibility.length) {
-        throw new Error(compatibility.map((issue) => issue.message).join(" "));
+        throw new SnapshotValidationError(
+          compatibility.map((issue) => issue.message).join(" "),
+        );
       }
       return { origin, target };
     });
     if (pairs.length === 0 || pairs.length !== targetObservations.length) {
-      throw new Error("Comparison Snapshots require complete compatible evidence pairs.");
+      throw new SnapshotValidationError(
+        "Comparison Snapshots require complete compatible evidence pairs.",
+      );
     }
     title = `${manifestPlaces[0].name} and ${manifestPlaces[1].name}`;
     summary = comparisonSummary(
@@ -351,6 +388,6 @@ export async function createSnapshot(
     manifest,
     contentHash: hash,
     canonicalUrl: `${siteConfig.applicationUrl}/snapshot/${slug}`,
-    references: references(manifest),
+    references: buildPublicationReferences(manifest),
   });
 }

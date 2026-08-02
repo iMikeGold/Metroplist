@@ -140,7 +140,7 @@ export default async function ComparePage({
             <p className="machine-value"><code>{result.canonicalComparisonKey}</code></p>
           </details>
         </section>
-        <nav>
+        <nav className="comparison-result-actions" aria-label="Comparison actions">
           <Link
             href={`/compare/${targetPlace.slug}/${originPlace.slug}?originObservationId=${encodeURIComponent(target.observationId)}&targetObservationId=${encodeURIComponent(origin.observationId)}`}
           >

@@ -48,7 +48,11 @@ export function ShareExportPanel({
     });
     const payload = await response.json().catch(() => ({}));
     if (!response.ok) {
-      setMessage(payload.error ?? "Snapshot creation is unavailable.");
+      setMessage(
+        response.status === 422 && typeof payload.error === "string"
+          ? payload.error
+          : "The Snapshot could not be created. Please try again.",
+      );
       return;
     }
     window.location.assign(`/snapshot/${payload.snapshotSlug}`);

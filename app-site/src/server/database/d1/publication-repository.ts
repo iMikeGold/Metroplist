@@ -15,6 +15,21 @@ interface Row {
   [key: string]: unknown;
 }
 
+function assertUniqueReferences(references: PublicationReference[]): void {
+  const seen = new Set<string>();
+  for (const reference of references) {
+    const key = [
+      reference.referenceType,
+      reference.referenceId,
+      reference.referenceRole,
+    ].join("\u001f");
+    if (seen.has(key)) {
+      throw new Error("Snapshot references must be unique before publication.");
+    }
+    seen.add(key);
+  }
+}
+
 function mapReference(row: Row): PublicationReference {
   return {
     referenceType: String(row.reference_type) as PublicationReference["referenceType"],
@@ -110,6 +125,7 @@ export class D1PublicationRepository implements PublicationRepository {
   async create(
     input: CreatePublicationSnapshot,
   ): Promise<{ snapshot: PublicationSnapshot; deduplicated: boolean }> {
+    assertUniqueReferences(input.references);
     const existing = await this.findByContentHash(input.contentHash);
     if (existing) return { snapshot: existing, deduplicated: true };
     const manifestJson = JSON.stringify(input.manifest);

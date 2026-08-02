@@ -10,6 +10,8 @@ describe("comparison origin handoff", () => {
   it("passes canonical slugs from every place entry point", () => {
     expect(atlas).toContain("/compare?origin=");
     expect(placeRecord).toContain("/compare?origin=");
+    expect(atlas).toContain("prefetch={false}");
+    expect(placeRecord).toContain("prefetch={false}");
     expect(atlas).not.toContain('href="/compare">Compare this place');
     expect(placeRecord).not.toContain('href="/compare">Compare this place');
   });
