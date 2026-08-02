@@ -223,6 +223,11 @@ export async function buildSnapshotManifest(
     const targetObservations = observations.filter(
       (observation) => observation.placeId === places[1].id,
     );
+    if (!originObservations.length || !targetObservations.length) {
+      throw new SnapshotValidationError(
+        "Comparison Snapshots require complete compatible evidence pairs.",
+      );
+    }
     const pairs = originObservations.map((origin) => {
       const target = targetObservations.find(
         (candidate) =>

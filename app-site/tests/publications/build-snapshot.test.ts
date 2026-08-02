@@ -195,4 +195,19 @@ describe("server-built Snapshots", () => {
       ),
     ).rejects.toThrow(/No compatible target evidence/);
   });
+
+  it("requires evidence from both places before building a comparison Snapshot", async () => {
+    await expect(
+      buildSnapshotManifest(
+        {
+          snapshotType: "comparison",
+          placeIds: [origin.id, target.id],
+          observationIds: ["obs-origin"],
+          contentMode: "full_comparison",
+          preferredVariant: "landscape",
+        },
+        repository,
+      ),
+    ).rejects.toThrow("Comparison Snapshots require complete compatible evidence pairs.");
+  });
 });
