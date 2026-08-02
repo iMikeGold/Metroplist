@@ -45,11 +45,29 @@ describe("publication and trust routes", () => {
     }
   });
 
+  it("serves self-contained SVG images while social metadata uses a safe PNG fallback", () => {
+    const route = readFileSync(
+      "src/app/snapshot/[snapshotSlug]/image/[variant]/route.tsx",
+      "utf8",
+    );
+    const snapshotPage = readFileSync(
+      "src/app/snapshot/[snapshotSlug]/page.tsx",
+      "utf8",
+    );
+    expect(route).toContain('"content-type": "image/svg+xml; charset=utf-8"');
+    expect(route).not.toContain("ImageResponse");
+    expect(snapshotPage).toContain("android-chrome-512x512.png");
+    expect(snapshotPage).not.toContain("/image/landscape");
+  });
+
   it("does not load social SDKs or trackers", () => {
     const share = readFileSync("src/components/snapshot-share-controls.tsx", "utf8");
     expect(share).not.toMatch(/sdk\.js|connect\.facebook|platform\.twitter|analytics/i);
     expect(share).toContain("navigator.share");
     expect(share).toContain("Copy link");
+    expect(share).toContain("navigator.canShare({ files: [file] })");
+    expect(share).toContain("image/png");
+    expect(share).not.toContain('download href={`/snapshot/${snapshotSlug}/image/');
   });
 
   it("keeps publication persistence failures out of public API responses", () => {

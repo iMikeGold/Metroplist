@@ -1,12 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   emailShareUrl,
   facebookShareUrl,
   linkedInShareUrl,
   xShareUrl,
 } from "@/modules/publications";
+import {
+  downloadSnapshotPng,
+  rasterizeSnapshotSvg,
+  readSnapshotSvg,
+  snapshotImageDimensions,
+  snapshotPngFilename,
+  type SnapshotImageVariant,
+} from "@/modules/publications/client-image";
 
 export function SnapshotShareControls({
   snapshotSlug,
@@ -20,7 +28,28 @@ export function SnapshotShareControls({
   canonicalUrl: string;
 }) {
   const [message, setMessage] = useState("");
+  const [isIos, setIsIos] = useState(false);
   const details = { title, summary, url: canonicalUrl };
+
+  useEffect(() => {
+    setIsIos(/iPad|iPhone|iPod/.test(navigator.userAgent));
+  }, []);
+
+  async function createPng(variant: SnapshotImageVariant): Promise<Blob> {
+    const response = await fetch(`/snapshot/${snapshotSlug}/image/${variant}`);
+    const svg = await readSnapshotSvg(response);
+    return rasterizeSnapshotSvg(svg, snapshotImageDimensions[variant]);
+  }
+
+  async function downloadImage(variant: SnapshotImageVariant) {
+    try {
+      const png = await createPng(variant);
+      downloadSnapshotPng(png, snapshotPngFilename(snapshotSlug, variant));
+      setMessage("PNG image downloaded.");
+    } catch {
+      setMessage("The image could not be generated. Please try again.");
+    }
+  }
 
   async function nativeShare() {
     if (!navigator.share) {
@@ -37,27 +66,23 @@ export function SnapshotShareControls({
   }
 
   async function shareImage() {
-    if (!navigator.share || !navigator.canShare) {
-      setMessage("Image sharing is unavailable here. Download the image instead.");
-      return;
-    }
     try {
-      const response = await fetch(`/snapshot/${snapshotSlug}/image/square`);
-      if (!response.ok) throw new Error("Image unavailable");
+      const png = await createPng("square");
       const file = new File(
-        [await response.blob()],
-        `metroplist-${snapshotSlug}.png`,
+        [png],
+        snapshotPngFilename(snapshotSlug, "square"),
         { type: "image/png" },
       );
-      if (!navigator.canShare({ files: [file] })) {
-        setMessage("This device cannot share the image file. Download it instead.");
+      if (!navigator.share || !navigator.canShare || !navigator.canShare({ files: [file] })) {
+        downloadSnapshotPng(png, file.name);
+        setMessage("This device cannot share image files. The PNG was downloaded instead.");
         return;
       }
       await navigator.share({ title, text: summary, url: canonicalUrl, files: [file] });
       setMessage("Image share sheet opened.");
     } catch (error) {
       if (error instanceof DOMException && error.name === "AbortError") return;
-      setMessage("The image could not be shared from this browser.");
+      setMessage("The image could not be generated. Please try again.");
     }
   }
 
@@ -81,18 +106,24 @@ export function SnapshotShareControls({
         <button type="button" onClick={() => copy(`${summary}\n${canonicalUrl}`, "Caption copied.")}>Copy caption</button>
         <a href={emailShareUrl(details)}>Email</a>
         <a href={xShareUrl(details)} target="_blank" rel="noreferrer">X</a>
-        <a href={linkedInShareUrl(details)} target="_blank" rel="noreferrer">LinkedIn</a>
-        <a href={facebookShareUrl(details)} target="_blank" rel="noreferrer">Facebook</a>
+        <a href={linkedInShareUrl(details)} target="_blank" rel="noreferrer">LinkedIn — web</a>
+        {isIos ? (
+          <button type="button" disabled title="Use Share to choose Facebook on this device.">
+            Facebook — use Share
+          </button>
+        ) : (
+          <a href={facebookShareUrl(details)} target="_blank" rel="noreferrer">Facebook</a>
+        )}
       </div>
       <div className="share-actions secondary">
-        <a download href={`/snapshot/${snapshotSlug}/image/square`}>Download square image</a>
-        <a download href={`/snapshot/${snapshotSlug}/image/portrait`}>Download portrait image</a>
-        <a download href={`/snapshot/${snapshotSlug}/image/story`}>Download story image</a>
+        <button type="button" onClick={() => void downloadImage("square")}>Download square image</button>
+        <button type="button" onClick={() => void downloadImage("portrait")}>Download portrait image</button>
+        <button type="button" onClick={() => void downloadImage("story")}>Download story image</button>
         <a download href={`/api/snapshots/${snapshotSlug}/csv`}>Download CSV</a>
         <a download href={`/api/snapshots/${snapshotSlug}/json`}>Download JSON</a>
       </div>
       <p className="share-note">
-        For Instagram, use your device share sheet where available, or download an image and copy the summary and link.
+        Instagram: Tap Share image and choose Instagram. If Instagram is unavailable, download the image and copy the caption.
       </p>
       <p role="status">{message}</p>
     </section>

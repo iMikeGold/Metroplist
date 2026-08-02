@@ -33,17 +33,17 @@ export async function generateMetadata({
       url: snapshot.canonicalUrl,
       type: "article",
       images: [{
-        url: `/snapshot/${snapshot.publicSlug}/image/landscape`,
-        width: 1200,
-        height: 630,
-        alt: snapshot.manifest.alternativeText,
+        url: "/assets/favicons/grey_teal/android-chrome-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "Metroplist",
       }],
     },
     twitter: {
       card: "summary_large_image",
       title: snapshot.title,
       description: snapshot.summary,
-      images: [`/snapshot/${snapshot.publicSlug}/image/landscape`],
+      images: ["/assets/favicons/grey_teal/android-chrome-512x512.png"],
     },
   };
 }
